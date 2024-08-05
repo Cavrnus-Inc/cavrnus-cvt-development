@@ -13,16 +13,15 @@ UCavrnusLiveFloatPropertyUpdate::~UCavrnusLiveFloatPropertyUpdate()
 
 void UCavrnusLiveFloatPropertyUpdate::Initialize(Cavrnus::CavrnusRelayModel* relayModel, FCavrnusSpaceConnection spaceConn, const FAbsolutePropertyId& propertyId, float value)
 {
-	livePropertyUpdate = new Cavrnus::CavrnusVirtualPropertyUpdate(relayModel, spaceConn, propertyId, Cavrnus::FPropertyValue::FloatPropValue(value));
+	InitializeGeneric(relayModel, spaceConn, propertyId, Cavrnus::FPropertyValue::FloatPropValue(value));
 }
 
 void UCavrnusLiveFloatPropertyUpdate::UpdateWithNewData(float value)
 {
-	TrySendUpdateData(Cavrnus::FPropertyValue::FloatPropValue(value));
+	UpdateWithNewDataGeneric(Cavrnus::FPropertyValue::FloatPropValue(value));
 }
 
 void UCavrnusLiveFloatPropertyUpdate::Finalize(float value)
 {
-	if (livePropertyUpdate)
-		livePropertyUpdate->Finalize(Cavrnus::FPropertyValue::FloatPropValue(value));
+	FinalizeGeneric(Cavrnus::FPropertyValue::FloatPropValue(value));
 }

@@ -9,16 +9,10 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "LivePropertyUpdates/CavrnusLivePropertyUpdate.h"
 #include "../Types/PropertyPostOptions.h"
 
 #include "CavrnusLiveTransformPropertyUpdate.generated.h"		// Always last
-
-namespace Cavrnus
-{
-	class CavrnusRelayModel;
-}
 
 /**
  * @brief UCavrnusLiveTransformPropertyUpdate class for handling live transform property updates in Cavrnus.

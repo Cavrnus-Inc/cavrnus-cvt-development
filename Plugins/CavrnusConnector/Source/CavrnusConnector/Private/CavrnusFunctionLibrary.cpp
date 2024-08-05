@@ -254,6 +254,30 @@ UCavrnusBinding* UCavrnusFunctionLibrary::BindGenericPropertyValue(FCavrnusSpace
 	return Cavrnus::CavrnusRelayModel::GetDataModel()->GetSpacePropertyModel(SpaceConnection)->BindProperty(FAbsolutePropertyId(ContainerName, PropertyName), OnPropertyUpdated);
 }
 
+UCavrnusLivePropertyUpdate* UCavrnusFunctionLibrary::BeginTransientGenericPropertyUpdate(FCavrnusSpaceConnection SpaceConnection, const FPropertiesContainer& ContainerName, const FString& PropertyName, Cavrnus::FPropertyValue PropertyValue)
+{
+	CheckErrors(SpaceConnection);
+
+	UCavrnusLivePropertyUpdate* res = nullptr;
+
+	if(PropertyValue.PropType == Cavrnus::FPropertyValue::PropertyType::Bool)
+		res = NewObject<UCavrnusLiveBoolPropertyUpdate>();
+	if (PropertyValue.PropType == Cavrnus::FPropertyValue::PropertyType::String)
+		res = NewObject<UCavrnusLiveStringPropertyUpdate>();
+	if (PropertyValue.PropType == Cavrnus::FPropertyValue::PropertyType::Color)
+		res = NewObject<UCavrnusLiveColorPropertyUpdate>();
+	if (PropertyValue.PropType == Cavrnus::FPropertyValue::PropertyType::Float)
+		res = NewObject<UCavrnusLiveFloatPropertyUpdate>();
+	if (PropertyValue.PropType == Cavrnus::FPropertyValue::PropertyType::Vector)
+		res = NewObject<UCavrnusLiveVectorPropertyUpdate>();
+	if (PropertyValue.PropType == Cavrnus::FPropertyValue::PropertyType::Transform)
+		res = NewObject<UCavrnusLiveTransformPropertyUpdate>();
+
+	res->InitializeGeneric(Cavrnus::CavrnusRelayModel::GetDataModel(), SpaceConnection, FAbsolutePropertyId(ContainerName, PropertyName), PropertyValue);
+
+	return res;
+}
+
 void UCavrnusFunctionLibrary::PostGenericPropertyUpdate(FCavrnusSpaceConnection SpaceConnection, const FPropertiesContainer& ContainerName, const FString& PropertyName, Cavrnus::FPropertyValue PropertyValue, const FPropertyPostOptions& options)
 {
 	CheckErrors(SpaceConnection);

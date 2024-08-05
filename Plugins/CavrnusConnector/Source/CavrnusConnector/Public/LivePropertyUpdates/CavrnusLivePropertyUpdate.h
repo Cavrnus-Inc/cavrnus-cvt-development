@@ -11,15 +11,13 @@
 #include "CoreMinimal.h"
 #include "Types/CavrnusSpaceConnection.h"
 #include "Types/CavrnusPropertyValue.h"
+#include "Types/PropertyPostOptions.h"
+#include "../../Private/RelayModel/CavrnusVirtualPropertyUpdate.h"
+#include "../../Private/RelayModel/CavrnusRelayModel.h"
 
 #include "CavrnusLivePropertyUpdate.generated.h"		// Always last
 
 struct FAbsolutePropertyId;
-
-namespace Cavrnus
-{
-	class CavrnusVirtualPropertyUpdate;
-}
 
 /**
  * @brief UCavrnusLivePropertyUpdate class for managing live property updates in Cavrnus.
@@ -39,6 +37,8 @@ public:
 	// Destructor
 	virtual ~UCavrnusLivePropertyUpdate();
 
+	void InitializeGeneric(Cavrnus::CavrnusRelayModel* relayModel, FCavrnusSpaceConnection spaceConn, const FAbsolutePropertyId& propertyId, Cavrnus::FPropertyValue value, const FPropertyPostOptions& options = FPropertyPostOptions());
+
 	/**
 	 * @brief Cancels transient operations sent to the server.
 	 *
@@ -57,6 +57,11 @@ public:
 	 */
 	double GetLastUpdatedTimeSeconds();
 
+
+	void UpdateWithNewDataGeneric(const Cavrnus::FPropertyValue& propVal);
+
+	void FinalizeGeneric(const Cavrnus::FPropertyValue& propVal);
+
 	UFUNCTION(BlueprintCallable, CallInEditor, Exec, Category = "Cavrnus|Properties",
 		meta = (ToolTip = "Posts and finalizes the most recent data to the server.  This object will no longer be valid to use afterwards.", ShortToolTip = "Posts and finalizes the most recent data to the server"))
 	void FinalizeCurrentValue();
@@ -66,7 +71,5 @@ protected:
 	/** Pointer to the live property update instance */
 	Cavrnus::CavrnusVirtualPropertyUpdate* livePropertyUpdate = nullptr;
 
-	Cavrnus::FPropertyValue lastSentPropValue;
-
-	void TrySendUpdateData(const Cavrnus::FPropertyValue& propVal);
+	Cavrnus::FPropertyValue lastSentPropValue;	
 };

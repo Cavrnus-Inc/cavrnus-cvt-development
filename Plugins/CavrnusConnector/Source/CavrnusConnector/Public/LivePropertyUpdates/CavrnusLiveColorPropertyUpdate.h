@@ -8,15 +8,9 @@
  */
 #pragma once
 
-#include "CoreMinimal.h"
 #include "LivePropertyUpdates/CavrnusLivePropertyUpdate.h"
 
 #include "CavrnusLiveColorPropertyUpdate.generated.h"		// Always last
-
-namespace Cavrnus
-{
-	class CavrnusRelayModel;
-}
 
 /**
  * @brief UCavrnusLiveColorPropertyUpdate class for managing live color property updates in Cavrnus.

@@ -9,15 +9,9 @@
  */
 #pragma once
 
-#include "CoreMinimal.h"
 #include "LivePropertyUpdates/CavrnusLivePropertyUpdate.h"
 
 #include "CavrnusLiveFloatPropertyUpdate.generated.h"		// Always last
-
-namespace Cavrnus
-{
-	class CavrnusRelayModel;
-}
 
 /**
  * @brief UCavrnusLiveFloatPropertyUpdate class for managing live float property updates in Cavrnus.

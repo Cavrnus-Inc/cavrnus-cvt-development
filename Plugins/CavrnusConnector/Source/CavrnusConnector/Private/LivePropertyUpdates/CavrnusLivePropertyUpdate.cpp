@@ -19,6 +19,11 @@ UCavrnusLivePropertyUpdate::~UCavrnusLivePropertyUpdate()
 	}
 }
 
+void UCavrnusLivePropertyUpdate::InitializeGeneric(Cavrnus::CavrnusRelayModel* relayModel, FCavrnusSpaceConnection spaceConn, const FAbsolutePropertyId& propertyId, Cavrnus::FPropertyValue value, const FPropertyPostOptions& options)
+{
+	livePropertyUpdate = new Cavrnus::CavrnusVirtualPropertyUpdate(relayModel, spaceConn, propertyId, value, options);
+}
+
 void UCavrnusLivePropertyUpdate::Cancel()
 {
 	if (livePropertyUpdate)
@@ -33,13 +38,19 @@ double UCavrnusLivePropertyUpdate::GetLastUpdatedTimeSeconds()
 	return 0.0f;
 }
 
-void UCavrnusLivePropertyUpdate::TrySendUpdateData(const Cavrnus::FPropertyValue& propVal)
+void UCavrnusLivePropertyUpdate::UpdateWithNewDataGeneric(const Cavrnus::FPropertyValue& propVal)
 {
 	if (livePropertyUpdate && !(lastSentPropValue == propVal))
 	{
 		livePropertyUpdate->UpdateWithNewData(propVal);
 		lastSentPropValue = propVal;
 	}
+}
+
+void UCavrnusLivePropertyUpdate::FinalizeGeneric(const Cavrnus::FPropertyValue& propVal)
+{
+	if (livePropertyUpdate)
+		livePropertyUpdate->Finalize(propVal);
 }
 
 void UCavrnusLivePropertyUpdate::FinalizeCurrentValue()

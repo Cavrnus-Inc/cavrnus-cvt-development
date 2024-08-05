@@ -28,22 +28,11 @@
 #include "Types/CavrnusCallbackTypes.h"
 #include "Types/PropertyPostOptions.h"
 #include "Types/PropertiesContainer.h"
+#include "LivePropertyUpdates\CavrnusLivePropertyUpdate.h"
 
 #include <algorithm>
 
 #include "CavrnusFunctionLibrary.generated.h"	// Always last
-
-// ============================================
-// Extra Types
-// ============================================
-
-// Forward declarations
-class UCavrnusLiveBoolPropertyUpdate;
-class UCavrnusLiveColorPropertyUpdate;
-class UCavrnusLiveFloatPropertyUpdate;
-class UCavrnusLiveStringPropertyUpdate;
-class UCavrnusLiveTransformPropertyUpdate;
-class UCavrnusLiveVectorPropertyUpdate;
 
 // ============================================
 // Class Definition
@@ -259,6 +248,8 @@ public:
 	 * @return A disposable binding instance.
 	 */
 	static UCavrnusBinding* BindGenericPropertyValue(FCavrnusSpaceConnection SpaceConnection, const FPropertiesContainer& ContainerName, const FString& PropertyName, const CavrnusPropertyFunction& OnPropertyUpdated);
+
+	static UCavrnusLivePropertyUpdate* BeginTransientGenericPropertyUpdate(FCavrnusSpaceConnection SpaceConnection, const FPropertiesContainer& ContainerName, const FString& PropertyName, Cavrnus::FPropertyValue PropertyValue);
 
 	/**
 	 * @brief Posts an update to a generic property in the Journal.

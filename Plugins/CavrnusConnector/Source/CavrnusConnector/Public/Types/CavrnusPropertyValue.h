@@ -60,6 +60,11 @@ namespace Cavrnus
 				return false;
 			}
 
+			bool MatchesType(const FPropertyValue& other) const 
+			{
+				return PropType == other.PropType;
+			}
+
 			FPropertyValue() : PropType(PropertyType::Unset), Priority(0) {}
 
 			//IMPORTANT: Can't use constructors because C++ confuses the types (strings read as bools)

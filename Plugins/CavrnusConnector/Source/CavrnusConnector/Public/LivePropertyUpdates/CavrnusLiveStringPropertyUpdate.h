@@ -8,15 +8,9 @@
  */
 #pragma once
 
-#include "CoreMinimal.h"
 #include "LivePropertyUpdates/CavrnusLivePropertyUpdate.h"
 
 #include "CavrnusLiveStringPropertyUpdate.generated.h"		// Always last
-
-namespace Cavrnus
-{
-	class CavrnusRelayModel;
-}
 
 /**
  * @brief UCavrnusLiveStringPropertyUpdate class for handling live string property updates in Cavrnus.
