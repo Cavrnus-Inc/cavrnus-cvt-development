@@ -62,7 +62,7 @@ void UCavrnusChatWindow::HandleChatUpdated(FChatEntry ChatUpdated)
 
 void UCavrnusChatWindow::HandleChatRemoved(FString ChatRemoved)
 {
-	if (CreatedWidgetsMap.Contains(ChatRemoved))
+	if (AllWidgetsMap.Contains(ChatRemoved))
 	{
 		Super::HandleChatRemoved(ChatRemoved);
 	}

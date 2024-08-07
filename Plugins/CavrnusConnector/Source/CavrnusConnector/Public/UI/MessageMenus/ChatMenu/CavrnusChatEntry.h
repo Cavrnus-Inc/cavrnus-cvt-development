@@ -5,7 +5,6 @@
 #include <Types/ChatEntry.h>
 
 #include "CoreMinimal.h"
-#include "Components/VerticalBox.h"
 #include "UI/CavrnusBaseUserWidget.h"
 #include "CavrnusChatEntry.generated.h"
 
@@ -23,24 +22,23 @@ class CAVRNUSCONNECTOR_API UCavrnusChatEntry : public UCavrnusBaseUserWidget
 public:
 	void Setup(const FChatEntry& InChatEntry);
 
-	UPROPERTY(BlueprintReadWrite, Category = "Cavrnus|ChatEntry", meta = (BindWidget))
+	UPROPERTY(BlueprintReadWrite, Category = "Cavrnus|ChatEntry", meta = (BindWidgetOptional))
 	UTextBlock* CreatorName = nullptr;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Cavrnus|ChatEntry", meta = (BindWidget))
+	UPROPERTY(BlueprintReadWrite, Category = "Cavrnus|ChatEntry", meta = (BindWidgetOptional))
 	UTextBlock* CreationTime = nullptr;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Cavrnus|ChatEntry", meta = (BindWidget))
+	UPROPERTY(BlueprintReadWrite, Category = "Cavrnus|ChatEntry", meta = (BindWidgetOptional))
 	UTextBlock* Message = nullptr;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Cavrnus|ChatEntry", meta = (BindWidget))
+	UPROPERTY(BlueprintReadWrite, Category = "Cavrnus|ChatEntry", meta = (BindWidgetOptional))
 	UImage* ProfilePicImage = nullptr;
-
-	// Chat Visuals
+	
+	UPROPERTY(BlueprintReadWrite, Category = "Cavrnus|ChatEntry", meta = (BindWidgetOptional))
+	UBorder* ChatBubbleBackground = nullptr;
+	
 	UPROPERTY(EditAnywhere, Category = "Cavrnus|ChatEntry")
 	FLinearColor LocalUserColor = FLinearColor();
-	
-	UPROPERTY(BlueprintReadWrite, Category = "Cavrnus|ChatEntry", meta = (BindWidget))
-	UBorder* ChatBubbleBackground = nullptr;
 
 	UFUNCTION(BlueprintImplementableEvent, Category = "Cavrnus|ChatEntry")
 	void SetupComplete(FChatEntry InChatEntry);

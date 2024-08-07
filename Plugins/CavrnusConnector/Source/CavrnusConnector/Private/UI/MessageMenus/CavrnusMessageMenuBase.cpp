@@ -115,7 +115,7 @@ void UCavrnusMessageMenuBase::HandleChatAdded(FChatEntry ChatAdded)
 		ChatWidget->Setup(ChatAdded);
 		ChatWidget->SetVisibility(ESlateVisibility::Visible);
 
-		CreatedWidgetsMap.Add(ChatAdded.ChatId, ChatWidget);
+		AllWidgetsMap.Add(ChatAdded.ChatId, ChatWidget);
 
 		//Sort Chats
 		SortedChatWidgets.Add(ChatWidget);
@@ -135,8 +135,8 @@ void UCavrnusMessageMenuBase::HandleChatUpdated(FChatEntry ChatUpdated)
 {
 	// UE_LOG(LogTemp, Display, TEXT("%s Updated!"), *ChatUpdated.ChatId);
 
-	if (CreatedWidgetsMap.Contains(ChatUpdated.ChatId))
-		CreatedWidgetsMap[ChatUpdated.ChatId]->Setup(ChatUpdated);
+	if (AllWidgetsMap.Contains(ChatUpdated.ChatId))
+		AllWidgetsMap[ChatUpdated.ChatId]->Setup(ChatUpdated);
 }
 
 void UCavrnusMessageMenuBase::HandleChatRemoved(const FString RemovalId)
@@ -150,10 +150,10 @@ void UCavrnusMessageMenuBase::HandleChatRemoved(const FString RemovalId)
 	{
 		SortedChatWidgets.RemoveAt(FoundIndex);
 
-		if (UCavrnusChatEntry** FoundWidget = CreatedWidgetsMap.Find(RemovalId))
+		if (UCavrnusChatEntry** FoundWidget = AllWidgetsMap.Find(RemovalId))
 		{
 			(*FoundWidget)->RemoveFromParent();
-			CreatedWidgetsMap.Remove(RemovalId);
+			AllWidgetsMap.Remove(RemovalId);
 
 			// UE_LOG(LogTemp, Display, TEXT("%s Removed!"), *RemovalId);
 		}

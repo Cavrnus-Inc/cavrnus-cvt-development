@@ -9,7 +9,7 @@ void UCavrnusChatEntry::Setup(const FChatEntry& InChatEntry)
 {
 	ChatData = InChatEntry;
 	
-	const FString UserName = InChatEntry.ChatCreatorIsLocalUser ? InChatEntry.ChatCreatorName + " (you)" : InChatEntry.ChatCreatorName;
+	const FString UserName = InChatEntry.ChatCreatorIsLocalUser ? "You" : InChatEntry.ChatCreatorName;
 
 	CreatorName->SetText(FText::FromString(UserName));
 	CreationTime->SetText(FText::FromString(FormatTime(InChatEntry)));

@@ -1,6 +1,5 @@
 #pragma once
 #include <CoreMinimal.h>
-#include "AbsolutePropertyId.h"
 #include "ChatEntry.generated.h"
 
 USTRUCT(BlueprintType)
@@ -8,7 +7,6 @@ struct CAVRNUSCONNECTOR_API FChatEntry
 {
 	GENERATED_BODY()
 	
-public:
 	FChatEntry() = default;	
 
 	UPROPERTY(BlueprintReadWrite, Category = "Cavrnus|Chat")
