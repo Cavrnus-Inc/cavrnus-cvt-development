@@ -60,6 +60,29 @@ namespace Cavrnus
 				return false;
 			}
 
+			FString ToString() const
+			{
+				FString res = "";
+				if (PropType == PropertyType::String)
+					res += "String: " + StringValue;
+				if (PropType == PropertyType::Bool && BoolValue)
+					res += "Bool: true";
+				if (PropType == PropertyType::Bool && !BoolValue)
+					res += "Bool: false";
+				if (PropType == PropertyType::Float)
+					res += "Float: " + FString::SanitizeFloat(FloatValue);
+				if (PropType == PropertyType::Color)
+					res += "Color: " + ColorValue.ToString();
+				if (PropType == PropertyType::Vector)
+					res += "Vector: " + VectorValue.ToString();
+				if (PropType == PropertyType::Transform)
+					res += "Transform: " + TransformValue.ToString();
+				if (PropType == PropertyType::Unset)
+					res += "Unset: No Data";
+
+				return res;
+			}
+
 			bool MatchesType(const FPropertyValue& other) const 
 			{
 				return PropType == other.PropType;
