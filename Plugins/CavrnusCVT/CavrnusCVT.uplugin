@@ -19,9 +19,19 @@
 			"Name": "CavrnusCVT",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "CavrnusCVTEditor",
+			"Type": "Editor",
+			"LoadingPhase": "Default",
+			"Enabled": true
 		}
 	],
 	"Plugins": [
+		{
+			"Name": "CavrnusConnector",
+			"Enabled": true
+		},
 		{
 			"Name": "SunPosition",
 			"Enabled": true
