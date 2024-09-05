@@ -52,7 +52,7 @@ void FCavrnusCVTEditorModule::CreateRibbonSubEntry(FMenuBuilder& MenuBuilder)
 		LOCTEXT("SetupLevel", "Setup level for Cavrnus & CVT"),
 		LOCTEXT("SetupLevelTooltip", "Configures SpatialConnector and sets default GameMode to use CVT"),
 		FSlateIcon(),
-		FUIAction(FExecuteAction::CreateRaw(this, &FCavrnusCVTEditorModule::CavernizeCvtLevel))
+		FUIAction(FExecuteAction::CreateRaw(this, &FCavrnusCVTEditorModule::SetupLevel))
 	);
 }
 
@@ -102,10 +102,10 @@ void FCavrnusCVTEditorModule::TryAddSpatialConnector()
 	}
 }
 
-void FCavrnusCVTEditorModule::CavernizeCvtLevel()
+void FCavrnusCVTEditorModule::SetupLevel()
 {
 	TryAddSpatialConnector();
-	ChangeLevelGameMode();
+	SetGameMode();
 	UClass* SpatialConnector = ACavrnusSpatialConnector::StaticClass();
 	if (const UWorld* World = GEditor->GetEditorWorldContext().World())
 	{
@@ -143,7 +143,7 @@ void FCavrnusCVTEditorModule::CavernizeCvtLevel()
 	}
 }
 
-void FCavrnusCVTEditorModule::ChangeLevelGameMode()
+void FCavrnusCVTEditorModule::SetGameMode()
 {
 	const UWorld* World = GEditor->GetEditorWorldContext().World();
 	
