@@ -47,6 +47,7 @@ namespace Cavrnus
 		static const ServerData::RelayClientMessage BuildAuthenticateWithPassword(int callbackId, const FString& server, const FString& email, const FString& password);
 
 		static const ServerData::RelayClientMessage BuildFetchAvailableSpaces(int callbackId);
+		static const ServerData::RelayClientMessage BuildCreateSpaceMsg(int callbackId, const FString& spaceName);
 		static const ServerData::RelayClientMessage BuildJoinSpaceWithId(int callbackId, const FString& spaceId);
 		static const ServerData::RelayClientMessage BuildExitSpaceMsg(const FCavrnusSpaceConnection& spaceConn);
 
@@ -71,6 +72,7 @@ namespace Cavrnus
 		static const ServerData::RelayClientMessage BuildCreateOp(const FCavrnusSpaceConnection& spaceConn, const FString& uniqueObjectId, const FString& instanceId);
 		static const ServerData::ObjectAdded BuildObjectAdded(const FCavrnusSpaceConnection& spaceConn, const FString& uniqueObjectId, const FString& instanceId);
 		static const ServerData::RelayClientMessage BuildDestroyOp(const FCavrnusSpaceConnection& spaceConn, const FString& containerName);
+		static const ServerData::ObjectRemoved BuildObjectRemoved(const FCavrnusSpaceConnection& spaceConn, const FString& instanceId);
 
 		static const ServerData::RelayClientMessage BuildRequestGlobalPermission(const FString& permission);
 		static const ServerData::RelayClientMessage BuildRequestSpacePermission(const FCavrnusSpaceConnection& spaceConn, const FString& permission);

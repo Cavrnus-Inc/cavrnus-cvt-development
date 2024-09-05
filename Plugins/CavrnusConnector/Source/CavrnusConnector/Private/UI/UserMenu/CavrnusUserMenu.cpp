@@ -11,13 +11,13 @@ void UCavrnusUserMenu::NativeConstruct()
 
 	if (!ScrollBox)
 	{
-		UE_LOG(LogTemp, Error, TEXT("UserMenu Scrollbox is not valid!"));
+		UE_LOG(LogCavrnusConnector, Error, TEXT("UserMenu Scrollbox is not valid!"));
 		return;
 	}
 
 	if (!WidgetEntry)
 	{
-		UE_LOG(LogTemp, Error, TEXT("UserMenu WidgetEntry is not valid!"));
+		UE_LOG(LogCavrnusConnector, Error, TEXT("UserMenu WidgetEntry is not valid!"));
 		return;
 	}
 
@@ -60,7 +60,10 @@ void UCavrnusUserMenu::NativeDestruct()
 {
 	Super::NativeDestruct();
 
-	UsersBinding->Unbind();
+	if (UsersBinding)
+		UsersBinding->Unbind();
+	
+	Entries.Empty();
 }
 
 void UCavrnusUserMenu::MaximizeUserSelected(const FCavrnusUser& MaximizedUser)

@@ -96,6 +96,12 @@ extern ChatUpdatedDefaultTypeInternal _ChatUpdated_default_instance_;
 class ContinueTransientPropertyUpdate;
 struct ContinueTransientPropertyUpdateDefaultTypeInternal;
 extern ContinueTransientPropertyUpdateDefaultTypeInternal _ContinueTransientPropertyUpdate_default_instance_;
+class CreateSpaceReq;
+struct CreateSpaceReqDefaultTypeInternal;
+extern CreateSpaceReqDefaultTypeInternal _CreateSpaceReq_default_instance_;
+class CreateSpaceResp;
+struct CreateSpaceRespDefaultTypeInternal;
+extern CreateSpaceRespDefaultTypeInternal _CreateSpaceResp_default_instance_;
 class DefinePropertyDefaultValue;
 struct DefinePropertyDefaultValueDefaultTypeInternal;
 extern DefinePropertyDefaultValueDefaultTypeInternal _DefinePropertyDefaultValue_default_instance_;
@@ -266,6 +272,8 @@ template<> ::ServerData::ChatBase* Arena::CreateMaybeMessage<::ServerData::ChatB
 template<> ::ServerData::ChatRemoved* Arena::CreateMaybeMessage<::ServerData::ChatRemoved>(Arena*);
 template<> ::ServerData::ChatUpdated* Arena::CreateMaybeMessage<::ServerData::ChatUpdated>(Arena*);
 template<> ::ServerData::ContinueTransientPropertyUpdate* Arena::CreateMaybeMessage<::ServerData::ContinueTransientPropertyUpdate>(Arena*);
+template<> ::ServerData::CreateSpaceReq* Arena::CreateMaybeMessage<::ServerData::CreateSpaceReq>(Arena*);
+template<> ::ServerData::CreateSpaceResp* Arena::CreateMaybeMessage<::ServerData::CreateSpaceResp>(Arena*);
 template<> ::ServerData::DefinePropertyDefaultValue* Arena::CreateMaybeMessage<::ServerData::DefinePropertyDefaultValue>(Arena*);
 template<> ::ServerData::ExitAllSpacesAndLogoutReq* Arena::CreateMaybeMessage<::ServerData::ExitAllSpacesAndLogoutReq>(Arena*);
 template<> ::ServerData::ExitAllSpacesAndLogoutResp* Arena::CreateMaybeMessage<::ServerData::ExitAllSpacesAndLogoutResp>(Arena*);
@@ -555,6 +563,7 @@ class RelayClientMessage final :
     kExitAllSpacesAndLogoutReq = 12,
     kJoinSpaceFromIdReq = 20,
     kShutdownSpaceConnectionReq = 21,
+    kCreateSpaceReq = 22,
     kGetAudioInputDevicesReq = 30,
     kGetAudioOutputDevicesReq = 31,
     kGetVideoInputDevicesReq = 32,
@@ -666,6 +675,7 @@ class RelayClientMessage final :
     kExitAllSpacesAndLogoutReqFieldNumber = 12,
     kJoinSpaceFromIdReqFieldNumber = 20,
     kShutdownSpaceConnectionReqFieldNumber = 21,
+    kCreateSpaceReqFieldNumber = 22,
     kGetAudioInputDevicesReqFieldNumber = 30,
     kGetAudioOutputDevicesReqFieldNumber = 31,
     kGetVideoInputDevicesReqFieldNumber = 32,
@@ -815,6 +825,24 @@ class RelayClientMessage final :
   void unsafe_arena_set_allocated_shutdownspaceconnectionreq(
       ::ServerData::ShutdownSpaceConnectionReq* shutdownspaceconnectionreq);
   ::ServerData::ShutdownSpaceConnectionReq* unsafe_arena_release_shutdownspaceconnectionreq();
+
+  // .ServerData.CreateSpaceReq CreateSpaceReq = 22;
+  bool has_createspacereq() const;
+  private:
+  bool _internal_has_createspacereq() const;
+  public:
+  void clear_createspacereq();
+  const ::ServerData::CreateSpaceReq& createspacereq() const;
+  PROTOBUF_NODISCARD ::ServerData::CreateSpaceReq* release_createspacereq();
+  ::ServerData::CreateSpaceReq* mutable_createspacereq();
+  void set_allocated_createspacereq(::ServerData::CreateSpaceReq* createspacereq);
+  private:
+  const ::ServerData::CreateSpaceReq& _internal_createspacereq() const;
+  ::ServerData::CreateSpaceReq* _internal_mutable_createspacereq();
+  public:
+  void unsafe_arena_set_allocated_createspacereq(
+      ::ServerData::CreateSpaceReq* createspacereq);
+  ::ServerData::CreateSpaceReq* unsafe_arena_release_createspacereq();
 
   // .ServerData.GetAudioInputDevicesReq GetAudioInputDevicesReq = 30;
   bool has_getaudioinputdevicesreq() const;
@@ -1242,6 +1270,7 @@ class RelayClientMessage final :
   void set_has_exitallspacesandlogoutreq();
   void set_has_joinspacefromidreq();
   void set_has_shutdownspaceconnectionreq();
+  void set_has_createspacereq();
   void set_has_getaudioinputdevicesreq();
   void set_has_getaudiooutputdevicesreq();
   void set_has_getvideoinputdevicesreq();
@@ -1283,6 +1312,7 @@ class RelayClientMessage final :
       ::ServerData::ExitAllSpacesAndLogoutReq* exitallspacesandlogoutreq_;
       ::ServerData::JoinSpaceFromIdReq* joinspacefromidreq_;
       ::ServerData::ShutdownSpaceConnectionReq* shutdownspaceconnectionreq_;
+      ::ServerData::CreateSpaceReq* createspacereq_;
       ::ServerData::GetAudioInputDevicesReq* getaudioinputdevicesreq_;
       ::ServerData::GetAudioOutputDevicesReq* getaudiooutputdevicesreq_;
       ::ServerData::GetVideoInputDevicesReq* getvideoinputdevicesreq_;
@@ -1523,6 +1553,7 @@ class RelayRemoteMessage final :
     kExitAllSpacesAndLogoutResp = 4,
     kJoinSpaceFromIdResp = 10,
     kShutdownSpaceConnectionResp = 11,
+    kCreateSpaceResp = 12,
     kGetAudioInputDevicesResp = 20,
     kGetAudioOutputDevicesResp = 21,
     kGetVideoInputDevicesResp = 22,
@@ -1633,6 +1664,7 @@ class RelayRemoteMessage final :
     kExitAllSpacesAndLogoutRespFieldNumber = 4,
     kJoinSpaceFromIdRespFieldNumber = 10,
     kShutdownSpaceConnectionRespFieldNumber = 11,
+    kCreateSpaceRespFieldNumber = 12,
     kGetAudioInputDevicesRespFieldNumber = 20,
     kGetAudioOutputDevicesRespFieldNumber = 21,
     kGetVideoInputDevicesRespFieldNumber = 22,
@@ -1764,6 +1796,24 @@ class RelayRemoteMessage final :
   void unsafe_arena_set_allocated_shutdownspaceconnectionresp(
       ::ServerData::ShutdownSpaceConnectionResp* shutdownspaceconnectionresp);
   ::ServerData::ShutdownSpaceConnectionResp* unsafe_arena_release_shutdownspaceconnectionresp();
+
+  // .ServerData.CreateSpaceResp CreateSpaceResp = 12;
+  bool has_createspaceresp() const;
+  private:
+  bool _internal_has_createspaceresp() const;
+  public:
+  void clear_createspaceresp();
+  const ::ServerData::CreateSpaceResp& createspaceresp() const;
+  PROTOBUF_NODISCARD ::ServerData::CreateSpaceResp* release_createspaceresp();
+  ::ServerData::CreateSpaceResp* mutable_createspaceresp();
+  void set_allocated_createspaceresp(::ServerData::CreateSpaceResp* createspaceresp);
+  private:
+  const ::ServerData::CreateSpaceResp& _internal_createspaceresp() const;
+  ::ServerData::CreateSpaceResp* _internal_mutable_createspaceresp();
+  public:
+  void unsafe_arena_set_allocated_createspaceresp(
+      ::ServerData::CreateSpaceResp* createspaceresp);
+  ::ServerData::CreateSpaceResp* unsafe_arena_release_createspaceresp();
 
   // .ServerData.GetAudioInputDevicesResp GetAudioInputDevicesResp = 20;
   bool has_getaudioinputdevicesresp() const;
@@ -2190,6 +2240,7 @@ class RelayRemoteMessage final :
   void set_has_exitallspacesandlogoutresp();
   void set_has_joinspacefromidresp();
   void set_has_shutdownspaceconnectionresp();
+  void set_has_createspaceresp();
   void set_has_getaudioinputdevicesresp();
   void set_has_getaudiooutputdevicesresp();
   void set_has_getvideoinputdevicesresp();
@@ -2230,6 +2281,7 @@ class RelayRemoteMessage final :
       ::ServerData::ExitAllSpacesAndLogoutResp* exitallspacesandlogoutresp_;
       ::ServerData::JoinSpaceFromIdResp* joinspacefromidresp_;
       ::ServerData::ShutdownSpaceConnectionResp* shutdownspaceconnectionresp_;
+      ::ServerData::CreateSpaceResp* createspaceresp_;
       ::ServerData::GetAudioInputDevicesResp* getaudioinputdevicesresp_;
       ::ServerData::GetAudioOutputDevicesResp* getaudiooutputdevicesresp_;
       ::ServerData::GetVideoInputDevicesResp* getvideoinputdevicesresp_;
@@ -5029,6 +5081,377 @@ class ShutdownSpaceConnectionResp final :
 };
 // -------------------------------------------------------------------
 
+class CreateSpaceReq final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:ServerData.CreateSpaceReq) */ {
+ public:
+  inline CreateSpaceReq() : CreateSpaceReq(nullptr) {}
+  ~CreateSpaceReq() override;
+  explicit PROTOBUF_CONSTEXPR CreateSpaceReq(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  CreateSpaceReq(const CreateSpaceReq& from);
+  CreateSpaceReq(CreateSpaceReq&& from) noexcept
+    : CreateSpaceReq() {
+    *this = ::std::move(from);
+  }
+
+  inline CreateSpaceReq& operator=(const CreateSpaceReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline CreateSpaceReq& operator=(CreateSpaceReq&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const CreateSpaceReq& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const CreateSpaceReq* internal_default_instance() {
+    return reinterpret_cast<const CreateSpaceReq*>(
+               &_CreateSpaceReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    19;
+
+  friend void swap(CreateSpaceReq& a, CreateSpaceReq& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(CreateSpaceReq* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(CreateSpaceReq* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  CreateSpaceReq* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<CreateSpaceReq>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const CreateSpaceReq& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const CreateSpaceReq& from) {
+    CreateSpaceReq::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(CreateSpaceReq* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "ServerData.CreateSpaceReq";
+  }
+  protected:
+  explicit CreateSpaceReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kNewSpaceNameFieldNumber = 10,
+    kReqIdFieldNumber = 1,
+  };
+  // string newSpaceName = 10;
+  void clear_newspacename();
+  const std::string& newspacename() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_newspacename(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_newspacename();
+  PROTOBUF_NODISCARD std::string* release_newspacename();
+  void set_allocated_newspacename(std::string* newspacename);
+  private:
+  const std::string& _internal_newspacename() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_newspacename(const std::string& value);
+  std::string* _internal_mutable_newspacename();
+  public:
+
+  // int32 reqId = 1;
+  void clear_reqid();
+  int32_t reqid() const;
+  void set_reqid(int32_t value);
+  private:
+  int32_t _internal_reqid() const;
+  void _internal_set_reqid(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:ServerData.CreateSpaceReq)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr newspacename_;
+    int32_t reqid_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_relay_2eproto;
+};
+// -------------------------------------------------------------------
+
+class CreateSpaceResp final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:ServerData.CreateSpaceResp) */ {
+ public:
+  inline CreateSpaceResp() : CreateSpaceResp(nullptr) {}
+  ~CreateSpaceResp() override;
+  explicit PROTOBUF_CONSTEXPR CreateSpaceResp(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  CreateSpaceResp(const CreateSpaceResp& from);
+  CreateSpaceResp(CreateSpaceResp&& from) noexcept
+    : CreateSpaceResp() {
+    *this = ::std::move(from);
+  }
+
+  inline CreateSpaceResp& operator=(const CreateSpaceResp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline CreateSpaceResp& operator=(CreateSpaceResp&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const CreateSpaceResp& default_instance() {
+    return *internal_default_instance();
+  }
+  enum RespCase {
+    kNewSpaceInfo = 10,
+    kError = 11,
+    RESP_NOT_SET = 0,
+  };
+
+  static inline const CreateSpaceResp* internal_default_instance() {
+    return reinterpret_cast<const CreateSpaceResp*>(
+               &_CreateSpaceResp_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    20;
+
+  friend void swap(CreateSpaceResp& a, CreateSpaceResp& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(CreateSpaceResp* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(CreateSpaceResp* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  CreateSpaceResp* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<CreateSpaceResp>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const CreateSpaceResp& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const CreateSpaceResp& from) {
+    CreateSpaceResp::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(CreateSpaceResp* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "ServerData.CreateSpaceResp";
+  }
+  protected:
+  explicit CreateSpaceResp(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kReqIdFieldNumber = 1,
+    kNewSpaceInfoFieldNumber = 10,
+    kErrorFieldNumber = 11,
+  };
+  // int32 reqId = 1;
+  void clear_reqid();
+  int32_t reqid() const;
+  void set_reqid(int32_t value);
+  private:
+  int32_t _internal_reqid() const;
+  void _internal_set_reqid(int32_t value);
+  public:
+
+  // .ServerData.SpaceInfo newSpaceInfo = 10;
+  bool has_newspaceinfo() const;
+  private:
+  bool _internal_has_newspaceinfo() const;
+  public:
+  void clear_newspaceinfo();
+  const ::ServerData::SpaceInfo& newspaceinfo() const;
+  PROTOBUF_NODISCARD ::ServerData::SpaceInfo* release_newspaceinfo();
+  ::ServerData::SpaceInfo* mutable_newspaceinfo();
+  void set_allocated_newspaceinfo(::ServerData::SpaceInfo* newspaceinfo);
+  private:
+  const ::ServerData::SpaceInfo& _internal_newspaceinfo() const;
+  ::ServerData::SpaceInfo* _internal_mutable_newspaceinfo();
+  public:
+  void unsafe_arena_set_allocated_newspaceinfo(
+      ::ServerData::SpaceInfo* newspaceinfo);
+  ::ServerData::SpaceInfo* unsafe_arena_release_newspaceinfo();
+
+  // string error = 11;
+  bool has_error() const;
+  private:
+  bool _internal_has_error() const;
+  public:
+  void clear_error();
+  const std::string& error() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_error(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_error();
+  PROTOBUF_NODISCARD std::string* release_error();
+  void set_allocated_error(std::string* error);
+  private:
+  const std::string& _internal_error() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_error(const std::string& value);
+  std::string* _internal_mutable_error();
+  public:
+
+  void clear_Resp();
+  RespCase Resp_case() const;
+  // @@protoc_insertion_point(class_scope:ServerData.CreateSpaceResp)
+ private:
+  class _Internal;
+  void set_has_newspaceinfo();
+  void set_has_error();
+
+  inline bool has_Resp() const;
+  inline void clear_has_Resp();
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    int32_t reqid_;
+    union RespUnion {
+      constexpr RespUnion() : _constinit_{} {}
+        ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized _constinit_;
+      ::ServerData::SpaceInfo* newspaceinfo_;
+      ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr error_;
+    } Resp_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    uint32_t _oneof_case_[1];
+
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_relay_2eproto;
+};
+// -------------------------------------------------------------------
+
 class PropertyValue final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:ServerData.PropertyValue) */ {
  public:
@@ -5088,7 +5511,7 @@ class PropertyValue final :
                &_PropertyValue_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    19;
+    21;
 
   friend void swap(PropertyValue& a, PropertyValue& b) {
     a.Swap(&b);
@@ -5373,7 +5796,7 @@ class DefinePropertyDefaultValue final :
                &_DefinePropertyDefaultValue_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    20;
+    22;
 
   friend void swap(DefinePropertyDefaultValue& a, DefinePropertyDefaultValue& b) {
     a.Swap(&b);
@@ -5577,7 +6000,7 @@ class PostPropertyUpdate final :
                &_PostPropertyUpdate_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    21;
+    23;
 
   friend void swap(PostPropertyUpdate& a, PostPropertyUpdate& b) {
     a.Swap(&b);
@@ -5792,7 +6215,7 @@ class BeginTransientPropertyUpdate final :
                &_BeginTransientPropertyUpdate_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    22;
+    24;
 
   friend void swap(BeginTransientPropertyUpdate& a, BeginTransientPropertyUpdate& b) {
     a.Swap(&b);
@@ -6023,7 +6446,7 @@ class ContinueTransientPropertyUpdate final :
                &_ContinueTransientPropertyUpdate_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    23;
+    25;
 
   friend void swap(ContinueTransientPropertyUpdate& a, ContinueTransientPropertyUpdate& b) {
     a.Swap(&b);
@@ -6254,7 +6677,7 @@ class FinalizeTransientPropertyUpdate final :
                &_FinalizeTransientPropertyUpdate_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    24;
+    26;
 
   friend void swap(FinalizeTransientPropertyUpdate& a, FinalizeTransientPropertyUpdate& b) {
     a.Swap(&b);
@@ -6485,7 +6908,7 @@ class CancelTransientPropertyUpdate final :
                &_CancelTransientPropertyUpdate_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    25;
+    27;
 
   friend void swap(CancelTransientPropertyUpdate& a, CancelTransientPropertyUpdate& b) {
     a.Swap(&b);
@@ -6658,7 +7081,7 @@ class TransformPropertyValue final :
                &_TransformPropertyValue_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    26;
+    28;
 
   friend void swap(TransformPropertyValue& a, TransformPropertyValue& b) {
     a.Swap(&b);
@@ -6855,7 +7278,7 @@ class GetAudioInputDevicesReq final :
                &_GetAudioInputDevicesReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    27;
+    29;
 
   friend void swap(GetAudioInputDevicesReq& a, GetAudioInputDevicesReq& b) {
     a.Swap(&b);
@@ -7003,7 +7426,7 @@ class GetAudioOutputDevicesReq final :
                &_GetAudioOutputDevicesReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    28;
+    30;
 
   friend void swap(GetAudioOutputDevicesReq& a, GetAudioOutputDevicesReq& b) {
     a.Swap(&b);
@@ -7151,7 +7574,7 @@ class GetVideoInputDevicesReq final :
                &_GetVideoInputDevicesReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    29;
+    31;
 
   friend void swap(GetVideoInputDevicesReq& a, GetVideoInputDevicesReq& b) {
     a.Swap(&b);
@@ -7305,7 +7728,7 @@ class GetAudioInputDevicesResp final :
                &_GetAudioInputDevicesResp_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    30;
+    32;
 
   friend void swap(GetAudioInputDevicesResp& a, GetAudioInputDevicesResp& b) {
     a.Swap(&b);
@@ -7512,7 +7935,7 @@ class GetAudioOutputDevicesResp final :
                &_GetAudioOutputDevicesResp_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    31;
+    33;
 
   friend void swap(GetAudioOutputDevicesResp& a, GetAudioOutputDevicesResp& b) {
     a.Swap(&b);
@@ -7719,7 +8142,7 @@ class GetVideoInputDevicesResp final :
                &_GetVideoInputDevicesResp_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    32;
+    34;
 
   friend void swap(GetVideoInputDevicesResp& a, GetVideoInputDevicesResp& b) {
     a.Swap(&b);
@@ -7920,7 +8343,7 @@ class SetAudioInputDeviceReq final :
                &_SetAudioInputDeviceReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    33;
+    35;
 
   friend void swap(SetAudioInputDeviceReq& a, SetAudioInputDeviceReq& b) {
     a.Swap(&b);
@@ -8088,7 +8511,7 @@ class SetAudioOutputDeviceReq final :
                &_SetAudioOutputDeviceReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    34;
+    36;
 
   friend void swap(SetAudioOutputDeviceReq& a, SetAudioOutputDeviceReq& b) {
     a.Swap(&b);
@@ -8256,7 +8679,7 @@ class SetVideoInputDeviceReq final :
                &_SetVideoInputDeviceReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    35;
+    37;
 
   friend void swap(SetVideoInputDeviceReq& a, SetVideoInputDeviceReq& b) {
     a.Swap(&b);
@@ -8424,7 +8847,7 @@ class PostCreateObject final :
                &_PostCreateObject_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    36;
+    38;
 
   friend void swap(PostCreateObject& a, PostCreateObject& b) {
     a.Swap(&b);
@@ -8613,7 +9036,7 @@ class PostRemoveObject final :
                &_PostRemoveObject_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    37;
+    39;
 
   friend void swap(PostRemoveObject& a, PostRemoveObject& b) {
     a.Swap(&b);
@@ -8786,7 +9209,7 @@ class FetchFileByIdReq final :
                &_FetchFileByIdReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    38;
+    40;
 
   friend void swap(FetchFileByIdReq& a, FetchFileByIdReq& b) {
     a.Swap(&b);
@@ -8939,7 +9362,7 @@ class FetchFileByIdProgressResp final :
                &_FetchFileByIdProgressResp_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    39;
+    41;
 
   friend void swap(FetchFileByIdProgressResp& a, FetchFileByIdProgressResp& b) {
     a.Swap(&b);
@@ -9119,7 +9542,7 @@ class FetchFileByIdCompletedResp final :
                &_FetchFileByIdCompletedResp_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    40;
+    42;
 
   friend void swap(FetchFileByIdCompletedResp& a, FetchFileByIdCompletedResp& b) {
     a.Swap(&b);
@@ -9304,7 +9727,7 @@ class FetchAllUploadedContentReq final :
                &_FetchAllUploadedContentReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    41;
+    43;
 
   friend void swap(FetchAllUploadedContentReq& a, FetchAllUploadedContentReq& b) {
     a.Swap(&b);
@@ -9452,7 +9875,7 @@ class UploadLocalFileResp final :
                &_UploadLocalFileResp_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    42;
+    44;
 
   friend void swap(UploadLocalFileResp& a, UploadLocalFileResp& b) {
     a.Swap(&b);
@@ -9620,7 +10043,7 @@ class UploadLocalFileReq final :
                &_UploadLocalFileReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    43;
+    45;
 
   friend void swap(UploadLocalFileReq& a, UploadLocalFileReq& b) {
     a.Swap(&b);
@@ -9836,7 +10259,7 @@ class FetchAllUploadedContentResp final :
                &_FetchAllUploadedContentResp_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    44;
+    46;
 
   friend void swap(FetchAllUploadedContentResp& a, FetchAllUploadedContentResp& b) {
     a.Swap(&b);
@@ -10004,7 +10427,7 @@ class PropMetadataStatus final :
                &_PropMetadataStatus_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    45;
+    47;
 
   friend void swap(PropMetadataStatus& a, PropMetadataStatus& b) {
     a.Swap(&b);
@@ -10192,7 +10615,7 @@ class PropertyValueStatus final :
                &_PropertyValueStatus_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    46;
+    48;
 
   friend void swap(PropertyValueStatus& a, PropertyValueStatus& b) {
     a.Swap(&b);
@@ -10400,7 +10823,7 @@ class LocalPropertyHandledResp final :
                &_LocalPropertyHandledResp_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    47;
+    49;
 
   friend void swap(LocalPropertyHandledResp& a, LocalPropertyHandledResp& b) {
     a.Swap(&b);
@@ -10588,7 +11011,7 @@ class UserAdded final :
                &_UserAdded_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    48;
+    50;
 
   friend void swap(UserAdded& a, UserAdded& b) {
     a.Swap(&b);
@@ -10765,7 +11188,7 @@ class UserRemoved final :
                &_UserRemoved_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    49;
+    51;
 
   friend void swap(UserRemoved& a, UserRemoved& b) {
     a.Swap(&b);
@@ -10938,7 +11361,7 @@ class UserVideoFrame final :
                &_UserVideoFrame_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    50;
+    52;
 
   friend void swap(UserVideoFrame& a, UserVideoFrame& b) {
     a.Swap(&b);
@@ -11149,7 +11572,7 @@ class SpaceInfo final :
                &_SpaceInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    51;
+    53;
 
   friend void swap(SpaceInfo& a, SpaceInfo& b) {
     a.Swap(&b);
@@ -11365,7 +11788,7 @@ class ObjectAdded final :
                &_ObjectAdded_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    52;
+    54;
 
   friend void swap(ObjectAdded& a, ObjectAdded& b) {
     a.Swap(&b);
@@ -11574,7 +11997,7 @@ class ObjectRemoved final :
                &_ObjectRemoved_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    53;
+    55;
 
   friend void swap(ObjectRemoved& a, ObjectRemoved& b) {
     a.Swap(&b);
@@ -11747,7 +12170,7 @@ class UpdateLocalUserMuted final :
                &_UpdateLocalUserMuted_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    54;
+    56;
 
   friend void swap(UpdateLocalUserMuted& a, UpdateLocalUserMuted& b) {
     a.Swap(&b);
@@ -11915,7 +12338,7 @@ class UpdateLocalUserCoPresence final :
                &_UpdateLocalUserCoPresence_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    55;
+    57;
 
   friend void swap(UpdateLocalUserCoPresence& a, UpdateLocalUserCoPresence& b) {
     a.Swap(&b);
@@ -12092,7 +12515,7 @@ class UpdateLocalUserStreamState final :
                &_UpdateLocalUserStreamState_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    56;
+    58;
 
   friend void swap(UpdateLocalUserStreamState& a, UpdateLocalUserStreamState& b) {
     a.Swap(&b);
@@ -12260,7 +12683,7 @@ class PermissionStatusReq final :
                &_PermissionStatusReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    57;
+    59;
 
   friend void swap(PermissionStatusReq& a, PermissionStatusReq& b) {
     a.Swap(&b);
@@ -12434,7 +12857,7 @@ class PermissionStatus final :
                &_PermissionStatus_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    58;
+    60;
 
   friend void swap(PermissionStatus& a, PermissionStatus& b) {
     a.Swap(&b);
@@ -12619,7 +13042,7 @@ class AllJoinableSpacesReq final :
                &_AllJoinableSpacesReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    59;
+    61;
 
   friend void swap(AllJoinableSpacesReq& a, AllJoinableSpacesReq& b) {
     a.Swap(&b);
@@ -12767,7 +13190,7 @@ class AllJoinableSpacesResp final :
                &_AllJoinableSpacesResp_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    60;
+    62;
 
   friend void swap(AllJoinableSpacesResp& a, AllJoinableSpacesResp& b) {
     a.Swap(&b);
@@ -12935,7 +13358,7 @@ class ChatAdded final :
                &_ChatAdded_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    61;
+    63;
 
   friend void swap(ChatAdded& a, ChatAdded& b) {
     a.Swap(&b);
@@ -13128,7 +13551,7 @@ class ChatUpdated final :
                &_ChatUpdated_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    62;
+    64;
 
   friend void swap(ChatUpdated& a, ChatUpdated& b) {
     a.Swap(&b);
@@ -13321,7 +13744,7 @@ class ChatRemoved final :
                &_ChatRemoved_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    63;
+    65;
 
   friend void swap(ChatRemoved& a, ChatRemoved& b) {
     a.Swap(&b);
@@ -13494,7 +13917,7 @@ class PostChat final :
                &_PostChat_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    64;
+    66;
 
   friend void swap(PostChat& a, PostChat& b) {
     a.Swap(&b);
@@ -13667,7 +14090,7 @@ class ChatBase final :
                &_ChatBase_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    65;
+    67;
 
   friend void swap(ChatBase& a, ChatBase& b) {
     a.Swap(&b);
@@ -14466,6 +14889,80 @@ inline ::ServerData::ShutdownSpaceConnectionReq* RelayClientMessage::_internal_m
 inline ::ServerData::ShutdownSpaceConnectionReq* RelayClientMessage::mutable_shutdownspaceconnectionreq() {
   ::ServerData::ShutdownSpaceConnectionReq* _msg = _internal_mutable_shutdownspaceconnectionreq();
   // @@protoc_insertion_point(field_mutable:ServerData.RelayClientMessage.ShutdownSpaceConnectionReq)
+  return _msg;
+}
+
+// .ServerData.CreateSpaceReq CreateSpaceReq = 22;
+inline bool RelayClientMessage::_internal_has_createspacereq() const {
+  return Msg_case() == kCreateSpaceReq;
+}
+inline bool RelayClientMessage::has_createspacereq() const {
+  return _internal_has_createspacereq();
+}
+inline void RelayClientMessage::set_has_createspacereq() {
+  _impl_._oneof_case_[0] = kCreateSpaceReq;
+}
+inline void RelayClientMessage::clear_createspacereq() {
+  if (_internal_has_createspacereq()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.Msg_.createspacereq_;
+    }
+    clear_has_Msg();
+  }
+}
+inline ::ServerData::CreateSpaceReq* RelayClientMessage::release_createspacereq() {
+  // @@protoc_insertion_point(field_release:ServerData.RelayClientMessage.CreateSpaceReq)
+  if (_internal_has_createspacereq()) {
+    clear_has_Msg();
+    ::ServerData::CreateSpaceReq* temp = _impl_.Msg_.createspacereq_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.Msg_.createspacereq_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::ServerData::CreateSpaceReq& RelayClientMessage::_internal_createspacereq() const {
+  return _internal_has_createspacereq()
+      ? *_impl_.Msg_.createspacereq_
+      : reinterpret_cast< ::ServerData::CreateSpaceReq&>(::ServerData::_CreateSpaceReq_default_instance_);
+}
+inline const ::ServerData::CreateSpaceReq& RelayClientMessage::createspacereq() const {
+  // @@protoc_insertion_point(field_get:ServerData.RelayClientMessage.CreateSpaceReq)
+  return _internal_createspacereq();
+}
+inline ::ServerData::CreateSpaceReq* RelayClientMessage::unsafe_arena_release_createspacereq() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:ServerData.RelayClientMessage.CreateSpaceReq)
+  if (_internal_has_createspacereq()) {
+    clear_has_Msg();
+    ::ServerData::CreateSpaceReq* temp = _impl_.Msg_.createspacereq_;
+    _impl_.Msg_.createspacereq_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void RelayClientMessage::unsafe_arena_set_allocated_createspacereq(::ServerData::CreateSpaceReq* createspacereq) {
+  clear_Msg();
+  if (createspacereq) {
+    set_has_createspacereq();
+    _impl_.Msg_.createspacereq_ = createspacereq;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:ServerData.RelayClientMessage.CreateSpaceReq)
+}
+inline ::ServerData::CreateSpaceReq* RelayClientMessage::_internal_mutable_createspacereq() {
+  if (!_internal_has_createspacereq()) {
+    clear_Msg();
+    set_has_createspacereq();
+    _impl_.Msg_.createspacereq_ = CreateMaybeMessage< ::ServerData::CreateSpaceReq >(GetArenaForAllocation());
+  }
+  return _impl_.Msg_.createspacereq_;
+}
+inline ::ServerData::CreateSpaceReq* RelayClientMessage::mutable_createspacereq() {
+  ::ServerData::CreateSpaceReq* _msg = _internal_mutable_createspacereq();
+  // @@protoc_insertion_point(field_mutable:ServerData.RelayClientMessage.CreateSpaceReq)
   return _msg;
 }
 
@@ -16669,6 +17166,80 @@ inline ::ServerData::ShutdownSpaceConnectionResp* RelayRemoteMessage::_internal_
 inline ::ServerData::ShutdownSpaceConnectionResp* RelayRemoteMessage::mutable_shutdownspaceconnectionresp() {
   ::ServerData::ShutdownSpaceConnectionResp* _msg = _internal_mutable_shutdownspaceconnectionresp();
   // @@protoc_insertion_point(field_mutable:ServerData.RelayRemoteMessage.ShutdownSpaceConnectionResp)
+  return _msg;
+}
+
+// .ServerData.CreateSpaceResp CreateSpaceResp = 12;
+inline bool RelayRemoteMessage::_internal_has_createspaceresp() const {
+  return Msg_case() == kCreateSpaceResp;
+}
+inline bool RelayRemoteMessage::has_createspaceresp() const {
+  return _internal_has_createspaceresp();
+}
+inline void RelayRemoteMessage::set_has_createspaceresp() {
+  _impl_._oneof_case_[0] = kCreateSpaceResp;
+}
+inline void RelayRemoteMessage::clear_createspaceresp() {
+  if (_internal_has_createspaceresp()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.Msg_.createspaceresp_;
+    }
+    clear_has_Msg();
+  }
+}
+inline ::ServerData::CreateSpaceResp* RelayRemoteMessage::release_createspaceresp() {
+  // @@protoc_insertion_point(field_release:ServerData.RelayRemoteMessage.CreateSpaceResp)
+  if (_internal_has_createspaceresp()) {
+    clear_has_Msg();
+    ::ServerData::CreateSpaceResp* temp = _impl_.Msg_.createspaceresp_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.Msg_.createspaceresp_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::ServerData::CreateSpaceResp& RelayRemoteMessage::_internal_createspaceresp() const {
+  return _internal_has_createspaceresp()
+      ? *_impl_.Msg_.createspaceresp_
+      : reinterpret_cast< ::ServerData::CreateSpaceResp&>(::ServerData::_CreateSpaceResp_default_instance_);
+}
+inline const ::ServerData::CreateSpaceResp& RelayRemoteMessage::createspaceresp() const {
+  // @@protoc_insertion_point(field_get:ServerData.RelayRemoteMessage.CreateSpaceResp)
+  return _internal_createspaceresp();
+}
+inline ::ServerData::CreateSpaceResp* RelayRemoteMessage::unsafe_arena_release_createspaceresp() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:ServerData.RelayRemoteMessage.CreateSpaceResp)
+  if (_internal_has_createspaceresp()) {
+    clear_has_Msg();
+    ::ServerData::CreateSpaceResp* temp = _impl_.Msg_.createspaceresp_;
+    _impl_.Msg_.createspaceresp_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void RelayRemoteMessage::unsafe_arena_set_allocated_createspaceresp(::ServerData::CreateSpaceResp* createspaceresp) {
+  clear_Msg();
+  if (createspaceresp) {
+    set_has_createspaceresp();
+    _impl_.Msg_.createspaceresp_ = createspaceresp;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:ServerData.RelayRemoteMessage.CreateSpaceResp)
+}
+inline ::ServerData::CreateSpaceResp* RelayRemoteMessage::_internal_mutable_createspaceresp() {
+  if (!_internal_has_createspaceresp()) {
+    clear_Msg();
+    set_has_createspaceresp();
+    _impl_.Msg_.createspaceresp_ = CreateMaybeMessage< ::ServerData::CreateSpaceResp >(GetArenaForAllocation());
+  }
+  return _impl_.Msg_.createspaceresp_;
+}
+inline ::ServerData::CreateSpaceResp* RelayRemoteMessage::mutable_createspaceresp() {
+  ::ServerData::CreateSpaceResp* _msg = _internal_mutable_createspaceresp();
+  // @@protoc_insertion_point(field_mutable:ServerData.RelayRemoteMessage.CreateSpaceResp)
   return _msg;
 }
 
@@ -20308,6 +20879,264 @@ inline void ShutdownSpaceConnectionResp::clear_has_Resp() {
 }
 inline ShutdownSpaceConnectionResp::RespCase ShutdownSpaceConnectionResp::Resp_case() const {
   return ShutdownSpaceConnectionResp::RespCase(_impl_._oneof_case_[0]);
+}
+// -------------------------------------------------------------------
+
+// CreateSpaceReq
+
+// int32 reqId = 1;
+inline void CreateSpaceReq::clear_reqid() {
+  _impl_.reqid_ = 0;
+}
+inline int32_t CreateSpaceReq::_internal_reqid() const {
+  return _impl_.reqid_;
+}
+inline int32_t CreateSpaceReq::reqid() const {
+  // @@protoc_insertion_point(field_get:ServerData.CreateSpaceReq.reqId)
+  return _internal_reqid();
+}
+inline void CreateSpaceReq::_internal_set_reqid(int32_t value) {
+  
+  _impl_.reqid_ = value;
+}
+inline void CreateSpaceReq::set_reqid(int32_t value) {
+  _internal_set_reqid(value);
+  // @@protoc_insertion_point(field_set:ServerData.CreateSpaceReq.reqId)
+}
+
+// string newSpaceName = 10;
+inline void CreateSpaceReq::clear_newspacename() {
+  _impl_.newspacename_.ClearToEmpty();
+}
+inline const std::string& CreateSpaceReq::newspacename() const {
+  // @@protoc_insertion_point(field_get:ServerData.CreateSpaceReq.newSpaceName)
+  return _internal_newspacename();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void CreateSpaceReq::set_newspacename(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.newspacename_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:ServerData.CreateSpaceReq.newSpaceName)
+}
+inline std::string* CreateSpaceReq::mutable_newspacename() {
+  std::string* _s = _internal_mutable_newspacename();
+  // @@protoc_insertion_point(field_mutable:ServerData.CreateSpaceReq.newSpaceName)
+  return _s;
+}
+inline const std::string& CreateSpaceReq::_internal_newspacename() const {
+  return _impl_.newspacename_.Get();
+}
+inline void CreateSpaceReq::_internal_set_newspacename(const std::string& value) {
+  
+  _impl_.newspacename_.Set(value, GetArenaForAllocation());
+}
+inline std::string* CreateSpaceReq::_internal_mutable_newspacename() {
+  
+  return _impl_.newspacename_.Mutable(GetArenaForAllocation());
+}
+inline std::string* CreateSpaceReq::release_newspacename() {
+  // @@protoc_insertion_point(field_release:ServerData.CreateSpaceReq.newSpaceName)
+  return _impl_.newspacename_.Release();
+}
+inline void CreateSpaceReq::set_allocated_newspacename(std::string* newspacename) {
+  if (newspacename != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.newspacename_.SetAllocated(newspacename, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.newspacename_.IsDefault()) {
+    _impl_.newspacename_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:ServerData.CreateSpaceReq.newSpaceName)
+}
+
+// -------------------------------------------------------------------
+
+// CreateSpaceResp
+
+// int32 reqId = 1;
+inline void CreateSpaceResp::clear_reqid() {
+  _impl_.reqid_ = 0;
+}
+inline int32_t CreateSpaceResp::_internal_reqid() const {
+  return _impl_.reqid_;
+}
+inline int32_t CreateSpaceResp::reqid() const {
+  // @@protoc_insertion_point(field_get:ServerData.CreateSpaceResp.reqId)
+  return _internal_reqid();
+}
+inline void CreateSpaceResp::_internal_set_reqid(int32_t value) {
+  
+  _impl_.reqid_ = value;
+}
+inline void CreateSpaceResp::set_reqid(int32_t value) {
+  _internal_set_reqid(value);
+  // @@protoc_insertion_point(field_set:ServerData.CreateSpaceResp.reqId)
+}
+
+// .ServerData.SpaceInfo newSpaceInfo = 10;
+inline bool CreateSpaceResp::_internal_has_newspaceinfo() const {
+  return Resp_case() == kNewSpaceInfo;
+}
+inline bool CreateSpaceResp::has_newspaceinfo() const {
+  return _internal_has_newspaceinfo();
+}
+inline void CreateSpaceResp::set_has_newspaceinfo() {
+  _impl_._oneof_case_[0] = kNewSpaceInfo;
+}
+inline void CreateSpaceResp::clear_newspaceinfo() {
+  if (_internal_has_newspaceinfo()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.Resp_.newspaceinfo_;
+    }
+    clear_has_Resp();
+  }
+}
+inline ::ServerData::SpaceInfo* CreateSpaceResp::release_newspaceinfo() {
+  // @@protoc_insertion_point(field_release:ServerData.CreateSpaceResp.newSpaceInfo)
+  if (_internal_has_newspaceinfo()) {
+    clear_has_Resp();
+    ::ServerData::SpaceInfo* temp = _impl_.Resp_.newspaceinfo_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.Resp_.newspaceinfo_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::ServerData::SpaceInfo& CreateSpaceResp::_internal_newspaceinfo() const {
+  return _internal_has_newspaceinfo()
+      ? *_impl_.Resp_.newspaceinfo_
+      : reinterpret_cast< ::ServerData::SpaceInfo&>(::ServerData::_SpaceInfo_default_instance_);
+}
+inline const ::ServerData::SpaceInfo& CreateSpaceResp::newspaceinfo() const {
+  // @@protoc_insertion_point(field_get:ServerData.CreateSpaceResp.newSpaceInfo)
+  return _internal_newspaceinfo();
+}
+inline ::ServerData::SpaceInfo* CreateSpaceResp::unsafe_arena_release_newspaceinfo() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:ServerData.CreateSpaceResp.newSpaceInfo)
+  if (_internal_has_newspaceinfo()) {
+    clear_has_Resp();
+    ::ServerData::SpaceInfo* temp = _impl_.Resp_.newspaceinfo_;
+    _impl_.Resp_.newspaceinfo_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void CreateSpaceResp::unsafe_arena_set_allocated_newspaceinfo(::ServerData::SpaceInfo* newspaceinfo) {
+  clear_Resp();
+  if (newspaceinfo) {
+    set_has_newspaceinfo();
+    _impl_.Resp_.newspaceinfo_ = newspaceinfo;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:ServerData.CreateSpaceResp.newSpaceInfo)
+}
+inline ::ServerData::SpaceInfo* CreateSpaceResp::_internal_mutable_newspaceinfo() {
+  if (!_internal_has_newspaceinfo()) {
+    clear_Resp();
+    set_has_newspaceinfo();
+    _impl_.Resp_.newspaceinfo_ = CreateMaybeMessage< ::ServerData::SpaceInfo >(GetArenaForAllocation());
+  }
+  return _impl_.Resp_.newspaceinfo_;
+}
+inline ::ServerData::SpaceInfo* CreateSpaceResp::mutable_newspaceinfo() {
+  ::ServerData::SpaceInfo* _msg = _internal_mutable_newspaceinfo();
+  // @@protoc_insertion_point(field_mutable:ServerData.CreateSpaceResp.newSpaceInfo)
+  return _msg;
+}
+
+// string error = 11;
+inline bool CreateSpaceResp::_internal_has_error() const {
+  return Resp_case() == kError;
+}
+inline bool CreateSpaceResp::has_error() const {
+  return _internal_has_error();
+}
+inline void CreateSpaceResp::set_has_error() {
+  _impl_._oneof_case_[0] = kError;
+}
+inline void CreateSpaceResp::clear_error() {
+  if (_internal_has_error()) {
+    _impl_.Resp_.error_.Destroy();
+    clear_has_Resp();
+  }
+}
+inline const std::string& CreateSpaceResp::error() const {
+  // @@protoc_insertion_point(field_get:ServerData.CreateSpaceResp.error)
+  return _internal_error();
+}
+template <typename ArgT0, typename... ArgT>
+inline void CreateSpaceResp::set_error(ArgT0&& arg0, ArgT... args) {
+  if (!_internal_has_error()) {
+    clear_Resp();
+    set_has_error();
+    _impl_.Resp_.error_.InitDefault();
+  }
+  _impl_.Resp_.error_.Set( static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:ServerData.CreateSpaceResp.error)
+}
+inline std::string* CreateSpaceResp::mutable_error() {
+  std::string* _s = _internal_mutable_error();
+  // @@protoc_insertion_point(field_mutable:ServerData.CreateSpaceResp.error)
+  return _s;
+}
+inline const std::string& CreateSpaceResp::_internal_error() const {
+  if (_internal_has_error()) {
+    return _impl_.Resp_.error_.Get();
+  }
+  return ::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited();
+}
+inline void CreateSpaceResp::_internal_set_error(const std::string& value) {
+  if (!_internal_has_error()) {
+    clear_Resp();
+    set_has_error();
+    _impl_.Resp_.error_.InitDefault();
+  }
+  _impl_.Resp_.error_.Set(value, GetArenaForAllocation());
+}
+inline std::string* CreateSpaceResp::_internal_mutable_error() {
+  if (!_internal_has_error()) {
+    clear_Resp();
+    set_has_error();
+    _impl_.Resp_.error_.InitDefault();
+  }
+  return _impl_.Resp_.error_.Mutable(      GetArenaForAllocation());
+}
+inline std::string* CreateSpaceResp::release_error() {
+  // @@protoc_insertion_point(field_release:ServerData.CreateSpaceResp.error)
+  if (_internal_has_error()) {
+    clear_has_Resp();
+    return _impl_.Resp_.error_.Release();
+  } else {
+    return nullptr;
+  }
+}
+inline void CreateSpaceResp::set_allocated_error(std::string* error) {
+  if (has_Resp()) {
+    clear_Resp();
+  }
+  if (error != nullptr) {
+    set_has_error();
+    _impl_.Resp_.error_.InitAllocated(error, GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(field_set_allocated:ServerData.CreateSpaceResp.error)
+}
+
+inline bool CreateSpaceResp::has_Resp() const {
+  return Resp_case() != RESP_NOT_SET;
+}
+inline void CreateSpaceResp::clear_has_Resp() {
+  _impl_._oneof_case_[0] = RESP_NOT_SET;
+}
+inline CreateSpaceResp::RespCase CreateSpaceResp::Resp_case() const {
+  return CreateSpaceResp::RespCase(_impl_._oneof_case_[0]);
 }
 // -------------------------------------------------------------------
 
@@ -28356,6 +29185,10 @@ inline void ChatBase::set_allocated_creatorpicurl(std::string* creatorpicurl) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

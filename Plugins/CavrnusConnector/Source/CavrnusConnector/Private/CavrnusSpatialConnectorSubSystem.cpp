@@ -7,13 +7,14 @@
 #include "FlagComponents/CavrnusLocalUserFlag.h"
 #include "Types\CavrnusUser.h"
 #include "TimerManager.h"
-#include "Engine/World.h" 
+#include "Engine/World.h"
 #include "CavrnusPropertiesContainer.h"
 #include "SpawnObjectHelpers.h"
 #include "RelayModel\CavrnusRelayModel.h"
 
 #include <GameFramework/Pawn.h>
 #include <GameFramework/PlayerController.h>
+#include <UObject/Package.h>
 
 #if WITH_EDITOR
 #include "LevelEditor.h"
@@ -197,7 +198,7 @@ UCavrnusSpatialConnectorSubSystemProxy::UIManager* UCavrnusSpatialConnectorSubSy
 
 UCavrnusSpatialConnectorSubSystemProxy::UCavrnusSpatialConnectorSubSystemProxy()
 {
-	ObjectOwner = GetTransientPackage();
+	ObjectOwner = Cast<UObject>(GetTransientPackage());
 }
 
 UCavrnusSpatialConnectorSubSystemProxy::~UCavrnusSpatialConnectorSubSystemProxy()

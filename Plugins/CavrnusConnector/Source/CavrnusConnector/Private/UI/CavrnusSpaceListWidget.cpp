@@ -3,30 +3,29 @@
 
 #include "CavrnusSpatialConnectorSubSystem.h"
 #include "CavrnusFunctionLibrary.h"
+#include "Components/Button.h"
 #include "UI/SpaceList/SpaceListOption.h"
 
 void UCavrnusSpaceListWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
-
-	Setup();
-}
-
-void UCavrnusSpaceListWidget::Setup()
-{
+	
+	SearchTextBox->OnTextChanged.AddDynamic(this, &UCavrnusSpaceListWidget::Search);
 	SearchTextBox->SetIsEnabled(false);
+	
 	SpacePagination->Setup(PaginationItemWidget);
 
-	UCavrnusFunctionLibrary::FetchJoinableSpaces([this](const TArray<FCavrnusSpaceInfo>& Spaces)
-	{
-		AllSpaces = Spaces;
-		CurrentDisplayedSpaces = Spaces;
-		
-		SearchTextBox->SetIsEnabled(true);
-		SearchTextBox->OnTextChanged.AddDynamic(this, &UCavrnusSpaceListWidget::Search);
-		
-		UpdatePagination(AllSpaces);
-	});
+	OnCavrnusSpaceSelected.AddDynamic(this, &UCavrnusSpaceListWidget::BlueprintSelectedSpaceToJoin);
+
+	FetchSpaces();
+}
+
+void UCavrnusSpaceListWidget::NativeDestruct()
+{
+	Super::NativeDestruct();
+
+	SearchTextBox->OnTextChanged.RemoveDynamic(this, &UCavrnusSpaceListWidget::Search);
+	OnCavrnusSpaceSelected.RemoveDynamic(this, &UCavrnusSpaceListWidget::BlueprintSelectedSpaceToJoin);
 }
 
 void UCavrnusSpaceListWidget::Search(const FText& SearchValue)
@@ -50,6 +49,19 @@ void UCavrnusSpaceListWidget::Search(const FText& SearchValue)
 	UpdatePagination(CurrentDisplayedSpaces);
 }
 
+void UCavrnusSpaceListWidget::FetchSpaces()
+{
+	UCavrnusFunctionLibrary::FetchJoinableSpaces([this](const TArray<FCavrnusSpaceInfo>& Spaces)
+	{
+		AllSpaces = Spaces;
+		CurrentDisplayedSpaces = Spaces;
+
+		UpdatePagination(AllSpaces);
+
+		SearchTextBox->SetIsEnabled(true);
+	});
+}
+
 void UCavrnusSpaceListWidget::UpdatePagination(TArray<FCavrnusSpaceInfo>& Spaces)
 {
 	Spaces.Sort([](const FCavrnusSpaceInfo& A, const FCavrnusSpaceInfo& B)
@@ -65,14 +77,18 @@ void UCavrnusSpaceListWidget::UpdatePagination(TArray<FCavrnusSpaceInfo>& Spaces
 		{
 			if (SpaceSelected)
 				SpaceSelected(space);
-			
-			OnCavrnusSpaceSelected.Broadcast(space.SpaceId);
 		};
 
 		Options.Add(new FSpaceListOption(Space, Callback));
 	}
 	
 	SpacePagination->NewPagination(PaginationItemWidget, Options);
+}
+
+void UCavrnusSpaceListWidget::BlueprintSelectedSpaceToJoin(FCavrnusSpaceInfo SpaceInfo)
+{
+	if (SpaceSelected)
+		SpaceSelected(SpaceInfo);
 }
 
 UCavrnusSpaceListWidget::FSpaceListOption::FSpaceListOption(const FCavrnusSpaceInfo& SpaceInfo, const FSpaceSelectedEvent& OnSelectSpace)
@@ -84,12 +100,8 @@ UCavrnusSpaceListWidget::FSpaceListOption::FSpaceListOption(const FCavrnusSpaceI
 void UCavrnusSpaceListWidget::FSpaceListOption::EntryBuilt(UUserWidget* Element)
 {
 	if (Element == nullptr)
-	{
 		return;
-	}
 
 	if (USpaceListOption* ListOption = Cast<USpaceListOption>(Element))
-	{
 		ListOption->Setup(Content, OnSelect);
-	}
 }

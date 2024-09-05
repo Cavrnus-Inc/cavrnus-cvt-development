@@ -4,6 +4,7 @@
 #include "CavrnusFunctionLibrary.h"
 #include "FlagComponents\CavrnusUserAvatarFlag.h"
 #include "FlagComponents\CavrnusSpawnedObjectFlag.h"
+#include <Engine/World.h>
 #include <Kismet/GameplayStatics.h>
 
 USpawnObjectHelpers::USpawnObjectHelpers()

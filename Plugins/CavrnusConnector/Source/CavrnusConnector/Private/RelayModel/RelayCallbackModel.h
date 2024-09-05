@@ -32,6 +32,7 @@ namespace Cavrnus
 		void RegisterBeginLoadingSpaceCallback(CavrnusSpaceBeginLoading onBeginLoading);
 		void HandleSpaceBeginLoading(FString spaceId);
 
+		int RegisterCreateSpaceCallback(CavrnusSpaceCreated onCreated, CavrnusError onFailure);
 		int RegisterJoinSpaceCallback(CavrnusSpaceConnected onConnected, CavrnusError onFailure);
 
 		int RegisterFetchAvailableSpacesCallback(CavrnusAllSpacesInfoEvent onAllSpacesArrived);
@@ -61,6 +62,10 @@ namespace Cavrnus
 		void HandleLoginGuestResponse(int callbackId, ServerData::AuthenticateGuestResp resp);
 
 		TArray<CavrnusSpaceBeginLoading*> BeginLoadingSpaceCallbacks;
+
+		TMap<int, CavrnusSpaceCreated*> CreateSpaceSuccessCallbacks;
+		TMap<int, CavrnusError*> CreateSpaceErrorCallbacks;
+		void HandleCreateSpaceResponse(int callbackId, ServerData::CreateSpaceResp resp);
 		
 		TMap<int, CavrnusSpaceConnected*> JoinSpaceSuccessCallbacks;
 		TMap<int, CavrnusError*> JoinSpaceErrorCallbacks;

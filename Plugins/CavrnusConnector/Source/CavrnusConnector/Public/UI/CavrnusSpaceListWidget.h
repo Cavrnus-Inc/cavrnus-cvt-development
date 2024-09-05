@@ -15,7 +15,7 @@
  * @brief Delegate for handling the selection of a Cavrnus space.
  * @param FString The ID of the selected space.
  */
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnCavrnusSpaceSelected, FString, SpaceId);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnCavrnusSpaceSelected, FCavrnusSpaceInfo, SpaceInfo);
 
 /**
  * @brief Type definition for a function that handles space selection events.
@@ -63,13 +63,9 @@ protected:
 	/** Construct the widget by calling chain of parent setup calls */
 	virtual void NativeConstruct() override;
 
+	virtual void NativeDestruct() override;
+
 public:
-	/**
-	* @brief Sets up the space list widget.
-	*/
-	UFUNCTION(BlueprintCallable, Category = "Cavrnus|SpaceList")
-	void Setup();
-	
 	FSpaceSelectedEvent SpaceSelected;
 	
 	/**
@@ -78,6 +74,8 @@ public:
 	 */
 	UFUNCTION()
 	void Search(const FText& SearchValue);
+
+	void FetchSpaces();
 
 	/** The widget class for pagination items. */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Cavrnus|SpaceList")
@@ -91,8 +89,11 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Cavrnus|SpaceList", meta = (BindWidget))
 	UEditableTextBox* SearchTextBox = nullptr;
 
+	UPROPERTY(EditAnywhere, Category = "Cavrnus|SpaceList", meta = (BindWidget))
+	UButton* ButtonCreateSpace = nullptr;
+
 	/** Delegate for handling the selection of a Cavrnus space. */
-	UPROPERTY(BlueprintAssignable, Category = "Cavrnus|SpaceList")
+	UPROPERTY(BlueprintCallable, BlueprintAssignable, Category = "Cavrnus|SpaceList")
 	FOnCavrnusSpaceSelected OnCavrnusSpaceSelected;
 
 private:
@@ -112,4 +113,7 @@ private:
 	 * @param Spaces The list of spaces to display.
 	 */
 	void UpdatePagination(TArray<FCavrnusSpaceInfo>& Spaces);
+
+	UFUNCTION()
+	void BlueprintSelectedSpaceToJoin(FCavrnusSpaceInfo SpaceInfo);
 };

@@ -2,6 +2,7 @@
 
 #include "UI/MessageMenus/CavrnusMessageMenuBase.h"
 
+#include "CavrnusConnectorModule.h"
 #include "CavrnusFunctionLibrary.h"
 #include "Types/CavrnusCallbackTypes.h"
 #include "TimerManager.h"
@@ -12,19 +13,19 @@ void UCavrnusMessageMenuBase::NativeConstruct()
 
 	if (!ChatScrollBox)
 	{
-		UE_LOG(LogTemp, Error, TEXT("Null ParentContainer!"));
+		UE_LOG(LogCavrnusConnector, Error, TEXT("Null ParentContainer!"));
 		return;
 	}
 
 	if (!ChatEntryWidget)
 	{
-		UE_LOG(LogTemp, Error, TEXT("Null ChatEntryWidget!"));
+		UE_LOG(LogCavrnusConnector, Error, TEXT("Null ChatEntryWidget!"));
 		return;
 	}
 
 	if (!ChatScrollBox->IsValidLowLevel())
 	{
-		UE_LOG(LogTemp, Error, TEXT("ChatScrollBox is not valid!"));
+		UE_LOG(LogCavrnusConnector, Error, TEXT("ChatScrollBox is not valid!"));
 		return;
 	}
 	
@@ -47,6 +48,9 @@ void UCavrnusMessageMenuBase::NativeDestruct()
 
 	if (GetWorld())
 		GetWorld()->GetTimerManager().ClearAllTimersForObject(this);
+
+	SortedChatWidgets.Empty();
+	AllWidgetsMap.Empty();
 }
 
 void UCavrnusMessageMenuBase::ResetPositionButtonClicked()
@@ -133,7 +137,7 @@ void UCavrnusMessageMenuBase::HandleChatAdded(FChatEntry ChatAdded)
 
 void UCavrnusMessageMenuBase::HandleChatUpdated(FChatEntry ChatUpdated)
 {
-	// UE_LOG(LogTemp, Display, TEXT("%s Updated!"), *ChatUpdated.ChatId);
+	// UE_LOG(LogCavrnusConnector, Display, TEXT("%s Updated!"), *ChatUpdated.ChatId);
 
 	if (AllWidgetsMap.Contains(ChatUpdated.ChatId))
 		AllWidgetsMap[ChatUpdated.ChatId]->Setup(ChatUpdated);
@@ -155,15 +159,15 @@ void UCavrnusMessageMenuBase::HandleChatRemoved(const FString RemovalId)
 			(*FoundWidget)->RemoveFromParent();
 			AllWidgetsMap.Remove(RemovalId);
 
-			// UE_LOG(LogTemp, Display, TEXT("%s Removed!"), *RemovalId);
+			// UE_LOG(LogCavrnusConnector, Display, TEXT("%s Removed!"), *RemovalId);
 		}
 		else
 		{
-			UE_LOG(LogTemp, Error, TEXT("Chat %s not found in CreatedWidgetsMap!"), *RemovalId);
+			UE_LOG(LogCavrnusConnector, Error, TEXT("Chat %s not found in CreatedWidgetsMap!"), *RemovalId);
 		}
 	} else
 	{
-		UE_LOG(LogTemp, Error, TEXT("Failure to remove Chat: %s"), *RemovalId);
+		UE_LOG(LogCavrnusConnector, Error, TEXT("Failure to remove Chat: %s"), *RemovalId);
 	}
 }
 

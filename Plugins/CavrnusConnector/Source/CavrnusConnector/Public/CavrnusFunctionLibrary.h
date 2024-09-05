@@ -169,6 +169,13 @@ public:
 
 	static void JoinSpace(FString SpaceId, CavrnusSpaceConnected OnConnected, CavrnusError OnFailure);
 
+	DECLARE_DYNAMIC_DELEGATE_OneParam(FCavrnusSpaceCreated, FCavrnusSpaceInfo, CreatedSpaceInfo);
+	UFUNCTION(BlueprintCallable, CallInEditor, Exec, Category = "Cavrnus|Spaces",
+		meta = (ToolTip = "Creates a new Cavrnus Space", ShortToolTip = "Creates a new Cavrnus Space"))
+	static void CreateSpace(FString SpaceName, FCavrnusSpaceCreated OnCreation, FCavrnusError OnFailure);
+
+	static void CreateSpace(FString SpaceName, CavrnusSpaceCreated OnCreation, CavrnusError OnFailure);
+
 	/**
 	 * @brief Delegate triggered when the process of joining a Space begins.
 	 * @param SpaceIdBeingLoaded The ID of the space being joined.

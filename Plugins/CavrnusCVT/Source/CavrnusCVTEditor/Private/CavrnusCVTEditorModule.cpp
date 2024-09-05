@@ -49,8 +49,8 @@ void FCavrnusCVTEditorModule::CreateCavrnusCvtRibbon(FMenuBarBuilder& Builder)
 void FCavrnusCVTEditorModule::CreateRibbonSubEntry(FMenuBuilder& MenuBuilder)
 {
 	MenuBuilder.AddMenuEntry(
-		LOCTEXT("FindAndCastActor", "Cavernize Level"),
-		LOCTEXT("FindAndCastActorTooltip", "Setup current level for CVT integration"),
+		LOCTEXT("SetupLevel", "Setup level for Cavrnus & CVT"),
+		LOCTEXT("SetupLevelTooltip", "Configures SpatialConnector and sets default GameMode to use CVT"),
 		FSlateIcon(),
 		FUIAction(FExecuteAction::CreateRaw(this, &FCavrnusCVTEditorModule::CavernizeCvtLevel))
 	);
@@ -114,13 +114,13 @@ void FCavrnusCVTEditorModule::CavernizeCvtLevel()
 			if (AActor* Actor = *Target)
 			{
 				// Log the name of the found actor
-				GLog->Log(FString::Printf(TEXT("Found actor: %s"), *Actor->GetName()));
+				UE_LOG(LogCavrnusCVTEditor, Warning, TEXT("Found actor: %s"), *Actor->GetName());
                 
 				// If you need to cast to your specific type
 				if (ACavrnusSpatialConnector* SC = Cast<ACavrnusSpatialConnector>(Actor))
 				{
 					// Perform operations on the casted actor
-					GLog->Log(FString::Printf(TEXT("Successfully casted actor: %s"), *Actor->GetName()));
+					UE_LOG(LogCavrnusCVTEditor, Warning, TEXT("Successfully casted actor: %s"), *Actor->GetName());
 
 					SC->SpawnableIdentifiers.Empty();
 					AddSpawnableItem(*SC, "BP_Cavrnus_DimensionLoader", TEXT("/CavrnusCVT/CavrnusIntegration/Commands/Dimension/BP_Cavrnus_DimensionLoader.BP_Cavrnus_DimensionLoader_C"));
@@ -132,14 +132,14 @@ void FCavrnusCVTEditorModule::CavernizeCvtLevel()
 				}
 				else
 				{
-					GLog->Log(TEXT("Failed to cast the actor to the specific type."));
+					UE_LOG(LogCavrnusCVTEditor, Warning, TEXT("Failed to cast the actor to SpatialConnector"));
 				}
 			}
 		}
 	}
 	else
 	{
-		GLog->Log(TEXT("World context is invalid."));
+		UE_LOG(LogCavrnusCVTEditor, Warning, TEXT("World context is invalid."));
 	}
 }
 

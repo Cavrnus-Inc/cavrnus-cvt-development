@@ -98,10 +98,10 @@ namespace Cavrnus
 			maxMessagesPerSecond = it->second > maxMessagesPerSecond ? it->second : maxMessagesPerSecond;
 			avgMessagesPerSecond = (float)(totalMessages) / (float)(totalEntries);
 		}
-		UE_LOG(LogTemp, Log, TEXT("Total number of messages: %d"), totalMessages);
-		UE_LOG(LogTemp, Log, TEXT("Total number of 1 second time windows: %d"), totalEntries);
-		UE_LOG(LogTemp, Log, TEXT("Max messages per second: %d"), maxMessagesPerSecond);
-		UE_LOG(LogTemp, Log, TEXT("Average messages per second: %f"), avgMessagesPerSecond);
+		UE_LOG(LogCavrnusConnector, Log, TEXT("Total number of messages: %d"), totalMessages);
+		UE_LOG(LogCavrnusConnector, Log, TEXT("Total number of 1 second time windows: %d"), totalEntries);
+		UE_LOG(LogCavrnusConnector, Log, TEXT("Max messages per second: %d"), maxMessagesPerSecond);
+		UE_LOG(LogCavrnusConnector, Log, TEXT("Average messages per second: %f"), avgMessagesPerSecond);
 #endif
 	}
 

@@ -26,6 +26,9 @@ namespace Cavrnus
 		case ServerData::RelayRemoteMessage::kAuthenticateGuestResp:
 			HandleLoginGuestResponse(callbackId, msg.authenticateguestresp());
 			break;
+		case ServerData::RelayRemoteMessage::kCreateSpaceResp:
+			HandleCreateSpaceResponse(callbackId, msg.createspaceresp());
+			break;
 		case ServerData::RelayRemoteMessage::kJoinSpaceFromIdResp:
 			HandleJoinSpaceResponse(callbackId, msg.joinspacefromidresp());
 			break;
@@ -176,6 +179,19 @@ namespace Cavrnus
 		BeginLoadingSpaceCallbacks.Empty();
 	}
 
+	int RelayCallbackModel::RegisterCreateSpaceCallback(CavrnusSpaceCreated onCreated, CavrnusError onFailure)
+	{
+		int reqId = ++currReqId;
+
+		CavrnusSpaceCreated* CallbackPtr = new CavrnusSpaceCreated(onCreated);
+		CavrnusError* ErrorPtr = new CavrnusError(onFailure);
+
+		CreateSpaceSuccessCallbacks.Add(reqId, CallbackPtr);
+		CreateSpaceErrorCallbacks.Add(reqId, ErrorPtr);
+
+		return reqId;
+	}
+
 	int RelayCallbackModel::RegisterJoinSpaceCallback(CavrnusSpaceConnected onConnected, CavrnusError onFailure)
 	{
 		int reqId = ++currReqId;
@@ -212,6 +228,26 @@ namespace Cavrnus
 			(*AllSpacesInfoCallbacks[callbackId])(AvailableSpaces);
 
 		AllSpacesInfoCallbacks.Remove(callbackId);
+	}
+
+	void RelayCallbackModel::HandleCreateSpaceResponse(int callbackId, ServerData::CreateSpaceResp resp)
+	{
+		if (resp.Resp_case() == ServerData::CreateSpaceResp::kNewSpaceInfo)
+		{
+			UE_LOG(LogCavrnusConnector, Log, TEXT("[CREATE SPACE SUCCESS]"));
+			if (CreateSpaceSuccessCallbacks.Contains(callbackId))
+				(*CreateSpaceSuccessCallbacks[callbackId])(CavrnusProtoTranslation::ToSpaceInfo(resp.newspaceinfo()));
+		}
+		else
+		{
+			FString error = UTF8_TO_TCHAR(resp.error().c_str());
+			UE_LOG(LogCavrnusConnector, Log, TEXT("[CREATE SPACE FAILURE]: %s"), *error);
+			if (CreateSpaceErrorCallbacks.Contains(callbackId))
+				(*CreateSpaceErrorCallbacks[callbackId])(error);
+		}
+
+		CreateSpaceSuccessCallbacks.Remove(callbackId);
+		CreateSpaceErrorCallbacks.Remove(callbackId);
 	}
 
 	void RelayCallbackModel::HandleJoinSpaceResponse(int callbackId, ServerData::JoinSpaceFromIdResp resp)

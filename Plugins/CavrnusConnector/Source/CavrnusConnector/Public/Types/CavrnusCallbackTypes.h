@@ -70,6 +70,8 @@ typedef TFunction<void(const FString&)> CavrnusSpaceBeginLoading;
  */
 typedef TFunction<void(const FCavrnusSpaceConnection&)> CavrnusSpaceConnected;
 
+typedef TFunction<void(const FCavrnusSpaceInfo&)> CavrnusSpaceCreated;
+
 /**
  * @brief Callback type for handling property updates.
  *

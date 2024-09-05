@@ -40,6 +40,7 @@ private:
 	FLinearColor DefaultButtonIconColor = FLinearColor();
 	
 	virtual void NativeConstruct() override;
+	virtual void NativeDestruct() override;
 
 	UFUNCTION()
 	void SubmitButtonClicked();

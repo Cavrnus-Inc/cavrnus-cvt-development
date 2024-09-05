@@ -116,6 +116,7 @@ namespace Cavrnus
 		void RegisterObjectDestructionCallback(TFunction<void (FCavrnusSpawnedObject)> cb);
 
 		void HandleSpaceObjectAdded(const ServerData::ObjectAdded& ObjectAdded);
+		void HandleSpaceObjectRemoved(const ServerData::ObjectRemoved& ObjectRemoved);
 
 	private:
 		static CavrnusRelayModel* Instance;
@@ -140,7 +141,6 @@ namespace Cavrnus
 		void HandleSpaceUserRemoved(ServerData::CavrnusSpaceConnection spaceConn, std::string userId);
 		void HandleSpaceUserVideoFrame(const ServerData::UserVideoFrame& VideoFrame);
 		void HandleServerPropertyUpdate(const ServerData::PropertyValueStatus& propStatus);
-		void HandleSpaceObjectRemoved(const ServerData::ObjectRemoved& ObjectRemoved);
 		void HandlePermissionStatus(const ServerData::PermissionStatus& PermissionStatus);
 		void HandleLocalPropHandledResp(const ServerData::LocalPropertyHandledResp& localPropHandled);
 		void HandlePropMetadataStatus(const ServerData::PropMetadataStatus& metadataStatus);
