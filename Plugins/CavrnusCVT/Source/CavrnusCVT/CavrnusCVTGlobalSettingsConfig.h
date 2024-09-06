@@ -6,7 +6,7 @@
 #include "CavrnusCVTGlobalSettingsConfig.generated.h"
 
 UCLASS(config = Game, defaultconfig, meta = (DisplayName = "Cavrnus CVT Settings"))
-class UCavrnusCvtGlobalSettingsConfig : public UDeveloperSettings
+class CAVRNUSCVT_API UCavrnusCvtGlobalSettingsConfig : public UDeveloperSettings
 {
 	GENERATED_BODY()
 

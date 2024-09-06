@@ -20,6 +20,7 @@ private:
 	void RegisterMenus();
 	void CreateCavrnusCvtRibbon(FMenuBarBuilder& Builder);
 	void CreateRibbonSubEntry(FMenuBuilder& MenuBuilder);
+	void TryAddManager();
 
 	void SetupLevel();
 	void SetGameMode();

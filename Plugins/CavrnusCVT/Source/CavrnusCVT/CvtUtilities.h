@@ -6,7 +6,7 @@
 #include "CvtUtilities.generated.h"
 
 UCLASS(Abstract)
-class UCvtUtilities : public UBlueprintFunctionLibrary
+class CAVRNUSCVT_API UCvtUtilities : public UBlueprintFunctionLibrary
 {
 	GENERATED_BODY()
 

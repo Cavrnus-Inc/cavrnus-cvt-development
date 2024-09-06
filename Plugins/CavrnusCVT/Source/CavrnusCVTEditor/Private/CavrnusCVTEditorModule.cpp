@@ -2,6 +2,7 @@
 
 #include "EngineUtils.h"
 #include "LevelEditor.h"
+#include "CavrnusCVT/CavrnusCVTManager.h"
 #include "GameFramework/GameModeBase.h"
 
 #define LOCTEXT_NAMESPACE "CavrnusCVTEditor"
@@ -56,6 +57,29 @@ void FCavrnusCVTEditorModule::CreateRibbonSubEntry(FMenuBuilder& MenuBuilder)
 	);
 }
 
+void FCavrnusCVTEditorModule::TryAddManager()
+{
+	if (GEditor)
+	{
+		if (UWorld* World = GEditor->GetEditorWorldContext().World())
+		{
+			FActorSpawnParameters SpawnParams;
+			SpawnParams.OverrideLevel = World->PersistentLevel;
+
+			bool bWorldNeedsManager = true;
+			for (TActorIterator<ACavrnusCVTManager> It(World); It; ++It)
+			{
+				bWorldNeedsManager = false;
+			}
+
+			if (bWorldNeedsManager)
+			{
+				World->SpawnActor<ACavrnusCVTManager>(SpawnParams);
+			}
+		}
+	}
+}
+
 void FCavrnusCVTEditorModule::TryAddSpatialConnector()
 {
 	if (GEditor)
@@ -105,7 +129,9 @@ void FCavrnusCVTEditorModule::TryAddSpatialConnector()
 void FCavrnusCVTEditorModule::SetupLevel()
 {
 	TryAddSpatialConnector();
+	TryAddManager();
 	SetGameMode();
+	
 	UClass* SpatialConnector = ACavrnusSpatialConnector::StaticClass();
 	if (const UWorld* World = GEditor->GetEditorWorldContext().World())
 	{
