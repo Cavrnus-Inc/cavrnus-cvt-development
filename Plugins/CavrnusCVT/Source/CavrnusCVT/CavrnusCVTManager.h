@@ -2,7 +2,7 @@
 
 #include "CavrnusCVTManager.generated.h"
 
-UCLASS(Blueprintable)
+UCLASS(Abstract, Blueprintable)
 class CAVRNUSCVT_API ACavrnusCVTManager : public AActor
 {
 	GENERATED_BODY()

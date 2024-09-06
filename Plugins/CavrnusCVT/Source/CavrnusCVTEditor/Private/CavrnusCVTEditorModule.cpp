@@ -67,14 +67,17 @@ void FCavrnusCVTEditorModule::TryAddManager()
 			SpawnParams.OverrideLevel = World->PersistentLevel;
 
 			bool bWorldNeedsManager = true;
-			for (TActorIterator<ACavrnusCVTManager> It(World); It; ++It)
+			for (TActorIterator<AActor> It(World, ACavrnusCVTManager::StaticClass()); It; ++It)
 			{
 				bWorldNeedsManager = false;
 			}
 
 			if (bWorldNeedsManager)
 			{
-				World->SpawnActor<ACavrnusCVTManager>(SpawnParams);
+				if (UClass* Found = GetDefaultBlueprint(TEXT("/CavrnusCVT/CavrnusIntegration/Commands/A_CavrnusCVTManager.A_CavrnusCVTManager_C"), AActor::StaticClass()))
+				{
+					World->SpawnActor(Found);
+				}
 			}
 		}
 	}
@@ -121,7 +124,6 @@ void FCavrnusCVTEditorModule::TryAddSpatialConnector()
 			{
 				UE_LOG(LogCavrnusCVTEditor, Warning, TEXT("World already contains a CavrnusSpatialConnector"));
 			}
-
 		}
 	}
 }
