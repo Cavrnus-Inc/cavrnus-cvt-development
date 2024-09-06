@@ -3,6 +3,7 @@
 #include "EngineUtils.h"
 #include "LevelEditor.h"
 #include "CavrnusCVT/CavrnusCVTManager.h"
+#include "Engine/StaticMeshActor.h"
 #include "GameFramework/GameModeBase.h"
 
 #define LOCTEXT_NAMESPACE "CavrnusCVTEditor"
@@ -55,6 +56,42 @@ void FCavrnusCVTEditorModule::CreateRibbonSubEntry(FMenuBuilder& MenuBuilder)
 		FSlateIcon(),
 		FUIAction(FExecuteAction::CreateRaw(this, &FCavrnusCVTEditorModule::SetupLevel))
 	);
+
+	MenuBuilder.AddMenuEntry(
+	LOCTEXT("SetupLevel", "Convert ALL StaticMeshActors to movable"),
+	LOCTEXT("SetupLevelTooltip", "Allows for objects in level to be manipulated via CVT move command"),
+	FSlateIcon(),
+	FUIAction(FExecuteAction::CreateRaw(this, &FCavrnusCVTEditorModule::ConvertStaticMeshActors))
+);
+}
+
+void FCavrnusCVTEditorModule::ConvertStaticMeshActors()
+{
+	if (GEditor)
+	{
+		if (UWorld* World = GEditor->GetEditorWorldContext().World())
+		{
+			FActorSpawnParameters SpawnParams;
+			SpawnParams.OverrideLevel = World->PersistentLevel;
+			for (TActorIterator<AStaticMeshActor> It(World); It; ++It)
+			{
+				if (AStaticMeshActor* StaticMeshActor = *It)
+				{
+					// Get the StaticMeshComponent
+					UStaticMeshComponent* StaticMeshComponent = StaticMeshActor->GetStaticMeshComponent();
+
+					if (StaticMeshComponent && StaticMeshComponent->Mobility == EComponentMobility::Static)
+					{
+						// Set the mobility to Movable
+						StaticMeshComponent->SetMobility(EComponentMobility::Movable);
+
+						// Mark the actor as modified in the editor so the change is saved
+						StaticMeshActor->MarkPackageDirty();
+					}
+				}
+			}
+		}
+	}
 }
 
 void FCavrnusCVTEditorModule::TryAddManager()

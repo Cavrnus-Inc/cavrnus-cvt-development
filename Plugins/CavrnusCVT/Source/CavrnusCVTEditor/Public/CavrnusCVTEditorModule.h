@@ -20,10 +20,12 @@ private:
 	void RegisterMenus();
 	void CreateCavrnusCvtRibbon(FMenuBarBuilder& Builder);
 	void CreateRibbonSubEntry(FMenuBuilder& MenuBuilder);
-	void TryAddManager();
+
+	void ConvertStaticMeshActors();
 
 	void SetupLevel();
 	void SetGameMode();
+	void TryAddManager();
 	void TryAddSpatialConnector();
 	
 	void AddSpawnableItem(ACavrnusSpatialConnector& SC, const FString& Id, const FString& Path);
