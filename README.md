@@ -7,25 +7,22 @@
 
 <h4 align="center">
   <a href="https://www.cavrnus.com/">
-    <img src="https://img.shields.io/badge/Cavrnus%20Website-label?style=flat&color=white&link=https%3A%2F%2Fwww.cavrnus.com%2F
-    " alt="cavrnus" style="height: 20px">
+    <img src="https://img.shields.io/badge/Cavrnus%20Website-label?style=flat&color=white" alt="Cavrnus Website" height="20">
   </a>
-    <a href="https://www.youtube.com/@cavrnus">
-    <img src="https://img.shields.io/badge/Cavrnus%20YouTube-label?style=flat&logo=YouTube&logoColor=red&labelColor=white&color=white&link=https%3A%2F%2Fwww.youtube.com%2F%40cavrnus
-    " alt="youtube"style="height:20px">
+  <a href="https://www.youtube.com/@cavrnus">
+    <img src="https://img.shields.io/badge/Cavrnus%20YouTube-label?style=flat&logo=YouTube&logoColor=red&labelColor=white&color=white" alt="Cavrnus YouTube" height="20">
   </a>
   <a href="https://twitter.com/cavrnus">
-    <img src="https://img.shields.io/badge/Cavrnus_Twitter-label?style=flat&logo=x&logoColor=black&labelColor=white&color=white&link=https%3A%2F%2Fwww.youtube.com%2F%40cavrnus
-    " alt="twitter" style="height: 20px;"></a>
-    <a href="https://discord.gg/AzgenDT7Ez">
-    <img src="https://img.shields.io/badge/Cavrnus_Support-label?style=flat&logo=discord&labelColor=white&color=white&link=https%3A%2F%2Fdiscord.gg%2FAzgenDT7Ez
-    " alt="discord" style="height: 20px;"></a>
+    <img src="https://img.shields.io/badge/Cavrnus_Twitter-label?style=flat&logo=x&logoColor=black&labelColor=white&color=white" alt="Cavrnus Twitter" height="20">
+  </a>
+  <a href="https://discord.gg/AzgenDT7Ez">
+    <img src="https://img.shields.io/badge/Cavrnus_Support-label?style=flat&logo=discord&labelColor=white&color=white" alt="Cavrnus Discord" height="20">
+  </a>
 </h4>
 
 <h4 align="center">
-    <img src="https://img.shields.io/badge/Version-1.0.0-label?style=flat&labelColor=blue&color=white&link=https%3A%2F%2Fwww.cavrnus.com%2F
-    " alt="discord" style="height: 20px;"></a>
-    </h4>
+  <img src="https://img.shields.io/badge/Version-1.0.0-blue?style=flat&labelColor=blue&color=white" alt="Version 1.0.0" height="20">
+</h4>
 
     
 ## Project Information  
@@ -94,9 +91,9 @@ Starting from an existing level is easy!
 
 
 ### **Full Cavrnus CVT Integration Guide** 
-The CavrnusCVT project also includes an in-depth guide of the [Cavrnus + CVT integration process](https://cavrnus.atlassian.net/wiki/spaces/CSM/pages/948764675/Cavrnus+CVT+Integration+Guide).
+This <b>CavrnusCVT</b> project also includes an in-depth guide of the [Cavrnus + CVT integration process](https://cavrnus.atlassian.net/wiki/spaces/CSM/pages/948764675/Cavrnus+CVT+Integration+Guide).
 
-For more information on the underlying CavrnusConnector plugin of which the CavnrusCVT plugin is built upon, refer to [Cavrnus + CVT integration process](https://cavrnus.atlassian.net/wiki/spaces/CSM/pages/872808449/Cavrnus+Spatial+Connector+for+Unreal+Engine).
+For more information on the underlying <b>CavrnusConnector</b> plugin of which the CavnrusCVT plugin is built upon, refer to [Cavrnus Spatial Connector for UnrealEngine](https://cavrnus.atlassian.net/wiki/spaces/CSM/pages/872808449/Cavrnus+Spatial+Connector+for+Unreal+Engine) documentation.
 
 
 ## Support and Feedback
