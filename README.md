@@ -28,7 +28,7 @@
 ## Project Information  
 **Version:** 1.0.0    
 **Last Updated:** 2024-09-13    
-**Documentation:** [Cavrnus CVT Documentation](https://cavrnus.atlassian.net/wiki/spaces/CSM/pages/948764675/Cavrnus+CVT+Integration+Guide)     
+**Documentation:** [Cavrnus CVT Documentation](https://cavrnus.atlassian.net/wiki/spaces/CSM/pages/948764675/Cavrnus+with+the+Unreal+Collab+Viewer+Template+CVT)     
 
 ## Introduction
 
@@ -91,7 +91,7 @@ Starting from an existing level is easy!
 
 
 ### **Full Cavrnus CVT Integration Guide** 
-This <b>CavrnusCVT</b> project also includes an in-depth guide of the [Cavrnus + CVT integration process](https://cavrnus.atlassian.net/wiki/spaces/CSM/pages/948764675/Cavrnus+CVT+Integration+Guide).
+This <b>CavrnusCVT</b> project also includes an in-depth guide of the [Cavrnus + CVT integration process](https://cavrnus.atlassian.net/wiki/spaces/CSM/pages/1048182803/Cavrnus-CVT-Plugin+Setup).
 
 For more information on the underlying <b>CavrnusConnector</b> plugin of which the CavnrusCVT plugin is built upon, refer to [Cavrnus Spatial Connector for UnrealEngine](https://cavrnus.atlassian.net/wiki/spaces/CSM/pages/872808449/Cavrnus+Spatial+Connector+for+Unreal+Engine) documentation.
 
