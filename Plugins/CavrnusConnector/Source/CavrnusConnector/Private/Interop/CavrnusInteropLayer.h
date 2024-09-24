@@ -15,7 +15,7 @@ namespace Cavrnus
 	{
 	public:
 		CavrnusInteropLayer(const FString& serverIP, int serverPort);
-		virtual ~CavrnusInteropLayer();
+		~CavrnusInteropLayer();
 
 		void SendMessage(const ServerData::RelayClientMessage& message);
 

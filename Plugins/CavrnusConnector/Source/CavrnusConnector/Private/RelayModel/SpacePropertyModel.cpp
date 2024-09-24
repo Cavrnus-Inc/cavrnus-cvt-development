@@ -38,7 +38,9 @@ namespace Cavrnus
 		}
 		
 		CurrServerPropValues[fullPropertyId] = value;
-		TryExecPropBindings(fullPropertyId);
+
+		if (!CurrLocalPropValues.Contains(fullPropertyId))
+			TryExecPropBindings(fullPropertyId);
 	}
 
 	int SpacePropertyModel::SetLocalPropVal(FAbsolutePropertyId fullPropertyId, FPropertyValue value)

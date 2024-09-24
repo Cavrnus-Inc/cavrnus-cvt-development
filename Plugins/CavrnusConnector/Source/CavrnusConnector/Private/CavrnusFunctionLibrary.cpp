@@ -301,9 +301,7 @@ UCavrnusLivePropertyUpdate* UCavrnusFunctionLibrary::BeginTransientGenericProper
 void UCavrnusFunctionLibrary::PostGenericPropertyUpdate(FCavrnusSpaceConnection SpaceConnection, const FPropertiesContainer& ContainerName, const FString& PropertyName, Cavrnus::FPropertyValue PropertyValue, const FPropertyPostOptions& options)
 {
 	CheckErrors(SpaceConnection);
-	int localChangeId = -1;
-	if(!options.Smoothed)
-		localChangeId = Cavrnus::CavrnusRelayModel::GetDataModel()->GetSpacePropertyModel(SpaceConnection)->SetLocalPropVal(FAbsolutePropertyId(ContainerName, PropertyName), PropertyValue);
+	int localChangeId = Cavrnus::CavrnusRelayModel::GetDataModel()->GetSpacePropertyModel(SpaceConnection)->SetLocalPropVal(FAbsolutePropertyId(ContainerName, PropertyName), PropertyValue);
 	Cavrnus::CavrnusRelayModel::GetDataModel()->SendMessage(Cavrnus::CavrnusProtoTranslation::BuildUpdatePropMsg(SpaceConnection, FAbsolutePropertyId(ContainerName, PropertyName), PropertyValue, localChangeId, options));
 }
 
