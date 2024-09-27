@@ -63,6 +63,13 @@ void UCavrnusUserMenu::NativeDestruct()
 	if (UsersBinding)
 		UsersBinding->Unbind();
 	
+	for (auto Entry : Entries)
+	{
+		if (Entry.Value->IsValidLowLevel())
+		{
+			ScrollBox->RemoveChild(Entry.Value);
+		}
+	}
 	Entries.Empty();
 }
 
