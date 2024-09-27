@@ -82,5 +82,8 @@
 			"Name": "DatasmithRuntime",
 			"Enabled": true
 		}
+	],
+	"SupportedTargetPlatforms": [
+		"Win64"
 	]
 }
