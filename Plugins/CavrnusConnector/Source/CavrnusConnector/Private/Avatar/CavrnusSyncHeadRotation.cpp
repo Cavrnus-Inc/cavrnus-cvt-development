@@ -5,6 +5,7 @@
 
 #include "TimerManager.h"
 #include "Engine/World.h"
+#include <GameFramework/Pawn.h>
 
 #include "CavrnusFunctionLibrary.h"
 #include "CavrnusPropertiesContainer.h"

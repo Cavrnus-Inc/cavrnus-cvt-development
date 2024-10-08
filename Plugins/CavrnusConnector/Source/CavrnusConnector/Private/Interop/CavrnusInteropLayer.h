@@ -30,7 +30,7 @@ namespace Cavrnus
 	private:
 		void SendLoop();
 		void ReceiveLoop();
-		void SendKeepAlive();
+		ServerData::RelayClientMessage BuildKeepAlive();
 		void SetStatus(ConnectionStatus newStatus);
 		const FString GetPluginPath();
 
@@ -55,6 +55,8 @@ namespace Cavrnus
 
 		typedef std::queue<std::shared_ptr<ServerData::RelayRemoteMessage> > MessageProcessingQueue;
 		MessageProcessingQueue MessageProcessingQueue_;
+
+		TArray<ServerData::RelayClientMessage> QueuedSendMessages;
 
 
 		//Copied from: https://stackoverflow.com/questions/440133/how-do-i-create-a-random-alpha-numeric-string-in-c

@@ -5,7 +5,7 @@
 #include "UObject/Object.h"
 #include "CavrnusConnectorSettings.generated.h"
 
-UCLASS(Config=Engine)
+UCLASS(Config=Cavrnus)
 class CAVRNUSCONNECTOR_API UCavrnusConnectorSettings : public UObject
 {
 	GENERATED_BODY()
@@ -60,7 +60,7 @@ public:
 	UPROPERTY(Config, EditAnywhere, Category = "Configuration")
 	bool RelayNetLogOutputToFile;
 
-	//   "-f" or "-F": Logging in the CavrnusRelayNet process saved to a file
+	//   "-d" or "-D": Disables voice and video communication
 	UPROPERTY(Config, EditAnywhere, Category = "Configuration")
 	bool RelayNetDisableRTC;
 };

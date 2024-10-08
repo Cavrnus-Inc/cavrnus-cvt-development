@@ -10,11 +10,13 @@ UCavrnusConnectorSettings::UCavrnusConnectorSettings(const FObjectInitializer& o
 	RelayNetIPAddress = "127.0.0.1";
 	RelayNetExecutableRelativeLocation = "CavrnusRelayNet\\net6.0-windows\\CavrnusRelayNet.exe";
 	RelayNetVerboseLogging = false;
+	RelayNetLogOutputToFile = false;
+	RelayNetDisableRTC = false;
+	
 	AutoStartConnector = false;
 
 	// Then load the config
 	this->LoadConfig();
-
 }
 
 //=====================================================================

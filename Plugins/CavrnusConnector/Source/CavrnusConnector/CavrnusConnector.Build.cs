@@ -73,6 +73,8 @@ public class CavrnusConnector : ModuleRules
 
     public CavrnusConnector(ReadOnlyTargetRules Target) : base(Target)
     {
+        Console.WriteLine("====== Entering CavrnusConnector.Build.cs ====== ");
+
         PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
         bUseRTTI = true;
         bEnableExceptions = true;
@@ -170,6 +172,6 @@ public class CavrnusConnector : ModuleRules
 
         RuntimeDependencies.Add(Path.Combine(ModuleDirectory, "CavrnusRelayNet/..."));
 
-        Console.WriteLine("====== Exiting from CavrnusConnector.Build.cs ====== ");
+        Console.WriteLine("====== Exiting CavrnusConnector.Build.cs ====== ");
     }
 }
