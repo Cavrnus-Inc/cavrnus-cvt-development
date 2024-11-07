@@ -1,4 +1,5 @@
 ﻿// Copyright(c) Cavrnus. All rights reserved.
+
 #include "RelayModel/SpacePropertyModel.h"
 #include <TextureResource.h>
 
@@ -45,7 +46,7 @@ namespace Cavrnus
 
 	int SpacePropertyModel::SetLocalPropVal(FAbsolutePropertyId fullPropertyId, FPropertyValue value)
 	{
-		//We treat this like a has, but use a dict cuz stupid string comparison stuff
+		// We treat this like a has, but use a dictionary to handle string comparisons
 		if (CurrPropReadonlyMetadata.Contains(fullPropertyId))
 		{
 			return -1;
@@ -205,7 +206,6 @@ namespace Cavrnus
 		CurrDefinedProps.Add(fullPropertyId);
 	}
 
-
 	void SpacePropertyModel::AddSpaceUser(const FCavrnusUser& user)
 	{
 		if (user.IsLocalUser)
@@ -304,5 +304,4 @@ namespace Cavrnus
 
 		return binding;
 	}
-
-}
+} // namespace Cavrnus

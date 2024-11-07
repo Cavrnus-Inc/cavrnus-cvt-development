@@ -1,4 +1,4 @@
-// // Copyright (c), Cavrnus. All rights reserved.
+// Copyright (c), Cavrnus. All rights reserved.
 
 #include "UI/UserMenu/CavrnusUserMenu.h"
 #include "CavrnusFunctionLibrary.h"

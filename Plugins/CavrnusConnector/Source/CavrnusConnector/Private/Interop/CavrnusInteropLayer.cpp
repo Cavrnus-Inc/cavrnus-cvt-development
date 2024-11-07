@@ -1,4 +1,5 @@
 ﻿// Copyright(c) Cavrnus. All rights reserved.
+
 #include "CavrnusInteropLayer.h"
 #include "CavrnusConnectorModule.h"
 #include "CavrnusConnectorSettings.h"
@@ -253,10 +254,10 @@ namespace Cavrnus
 #if UE_BUILD_SHIPPING
 			bool bSilent = true;
 #else
-			bool bSilent = settings->RelayNetVerboseLogging ? settings->RelayNetSilent : true;
+			bool bSilent = settings->RelayNetSilent;
 #endif
 
-			if (RelayNetRunner_.startService(Client_.GetServerPort(), false, TCHAR_TO_UTF8(*exeLocation), TCHAR_TO_UTF8(*settings->GetRelayNetOptionalParameters())))
+			if (RelayNetRunner_.startService(Client_.GetServerPort(), bSilent, TCHAR_TO_UTF8(*exeLocation), TCHAR_TO_UTF8(*settings->GetRelayNetOptionalParameters())))
 			{
 				RelayNetRunner_.runAsync();
 				ServiceIsStarted = true;
@@ -291,4 +292,4 @@ namespace Cavrnus
 
 		return PluginPath;
 	}
-}
+} // namespace Cavrnus

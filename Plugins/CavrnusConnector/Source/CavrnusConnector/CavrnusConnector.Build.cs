@@ -1,4 +1,4 @@
-// Copyright 1998-2019 Epic Games, Inc. All Rights Reserved.
+// Copyright(c) Cavrnus. All rights reserved.
 
 using UnrealBuildTool;
 using System;
@@ -97,8 +97,7 @@ public class CavrnusConnector : ModuleRules
             "SlateCore",
             "RenderCore",
             "RHI",
-			"ProceduralMeshComponent",
-			"Networking",
+            "Networking",
             "Sockets",
             "JsonBlueprintUtilities",
 #if UE_5_4_OR_LATER

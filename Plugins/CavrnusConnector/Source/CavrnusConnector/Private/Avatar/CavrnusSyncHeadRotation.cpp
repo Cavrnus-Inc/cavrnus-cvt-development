@@ -1,5 +1,4 @@
-﻿
-// Copyright Epic Games, Inc. All Rights Reserved.
+﻿// Copyright(c) Cavrnus. All rights reserved.
 
 #include "Avatar/CavrnusSyncHeadRotation.h"
 

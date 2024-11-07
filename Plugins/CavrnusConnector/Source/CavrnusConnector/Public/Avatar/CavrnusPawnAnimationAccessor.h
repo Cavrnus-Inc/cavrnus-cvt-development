@@ -1,4 +1,6 @@
-﻿#pragma once
+﻿// Copyright(c) Cavrnus. All rights reserved.
+
+#pragma once
 
 #include "CoreMinimal.h"
 #include <Components/ActorComponent.h>

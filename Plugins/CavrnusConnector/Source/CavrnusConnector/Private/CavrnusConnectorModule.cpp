@@ -11,8 +11,6 @@
 #if WITH_EDITOR
 #include "ISettingsModule.h"
 #include "ISettingsSection.h"
-//#include "UObject/Class.h"
-//#include "UObject/WeakObjectPtr.h"
 #endif
 
 #define LOCTEXT_NAMESPACE "CavrnusConnectorModule"

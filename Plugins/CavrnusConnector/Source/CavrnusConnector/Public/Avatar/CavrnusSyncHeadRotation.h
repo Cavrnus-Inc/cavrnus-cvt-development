@@ -1,4 +1,4 @@
-﻿// Copyright Epic Games, Inc. All Rights Reserved.
+﻿// Copyright(c) Cavrnus. All rights reserved.
 
 #pragma once
 
