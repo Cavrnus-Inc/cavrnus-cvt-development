@@ -3,7 +3,7 @@
     <img src="ReadmeContent/banner.png" alt="Cavrnus Banner"/>
 </p>
 
-# <p style="text-align: center;">Cavrnus Collaborative Viewer</p>
+# <p style="text-align: center;">Cavrnus Collab Viewer</p>
 
 <h4 align="center">
   <a href="https://www.cavrnus.com/">
