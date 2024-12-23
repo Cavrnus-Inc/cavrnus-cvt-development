@@ -156,9 +156,6 @@ public:
 	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Cavrnus")
 	TMap<FString, TSubclassOf<AActor>> SpawnableIdentifiers;
 
-	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Cavrnus")
-	FString SpaceId;
-
 private:
 	// Really should be in a utility/helper class
 	UClass* GetDefaultBlueprint(const FString& Path, UClass* BaseClass) const;

@@ -74,7 +74,6 @@ void UCavrnusSpaceListWidget::UpdatePagination(TArray<FCavrnusSpaceInfo>& Spaces
 	{
 		const FSpaceSelectedEvent SpaceSelectedEvent = [this](const FCavrnusSpaceInfo& SpaceInfo)
 		{
-			UCavrnusFunctionLibrary::GetCavrnusSpatialConnector()->SpaceId = SpaceInfo.SpaceId;
 			UCavrnusFunctionLibrary::JoinSpace(SpaceInfo.SpaceId, [](const FCavrnusSpaceConnection&) {  }, [](const FString&) {});
 			this->RemoveFromParent();
 		};

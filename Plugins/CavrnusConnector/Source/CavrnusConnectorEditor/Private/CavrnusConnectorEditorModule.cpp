@@ -25,6 +25,8 @@
 #include <Tools/Modes.h>
 #include <Misc/EngineVersionComparison.h>
 
+#include "UI/ServerSelectionMenu/CavrnusServerSelectWidget.h"
+
 #define LOCTEXT_NAMESPACE "CavrnusConnectorEditor"
 
 IMPLEMENT_MODULE(FCavrnusConnectorEditorModule, CavrnusConnectorEditor)
@@ -539,7 +541,7 @@ void FCavrnusConnectorEditorModule::AddCavrnusSpatialConnectorToLevel()
 					CavrnusSpatialConnector->SpawnableIdentifiers = SpawnableIdentifiers;
 					CavrnusSpatialConnector->GuestName = "Unreal Guest";
 					CavrnusSpatialConnector->MemberLoginMenu = GetDefaultBlueprint(TEXT("/CavrnusConnector/UI/Menus/LoginMenus/WBP_MemberLogin.WBP_MemberLogin_C"), UUserWidget::StaticClass());
-					CavrnusSpatialConnector->ServerSelectionMenu = GetDefaultBlueprint(TEXT("/CavrnusConnector/UI/Menus/ServerMenu/WBP_ServerSelectionMenu.WBP_ServerSelectionMenu_C"), UCavrnusLoginWidget::StaticClass());
+					CavrnusSpatialConnector->ServerSelectionMenu = GetDefaultBlueprint(TEXT("/CavrnusConnector/UI/Menus/ServerMenu/WBP_ServerSelectionMenu.WBP_ServerSelectionMenu_C"), UCavrnusServerSelectionWidget::StaticClass());
 					CavrnusSpatialConnector->GuestJoinMenu = GetDefaultBlueprint(TEXT("/CavrnusConnector/UI/Menus/LoginMenus/WBP_GuestLogin.WBP_GuestLogin_C"), UCavrnusGuestLoginWidget::StaticClass());
 					CavrnusSpatialConnector->SpaceJoinMenu = GetDefaultBlueprint(TEXT("/CavrnusConnector/UI/Menus/SpaceListMenu/WBP_SpaceSelection.WBP_SpaceSelection_C"), UUserWidget::StaticClass());
 					CavrnusSpatialConnector->LoadingWidgetClass = GetDefaultBlueprint(TEXT("/CavrnusConnector/UI/Menus/LoadingMenu/WBP_LoadingWidget.WBP_LoadingWidget_C"), UUserWidget::StaticClass());

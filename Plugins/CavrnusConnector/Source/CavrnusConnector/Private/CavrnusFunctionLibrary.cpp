@@ -1,6 +1,6 @@
 // Copyright (c) 2024 Cavrnus. All rights reserved.
 
-#include "Public/CavrnusFunctionLibrary.h"
+#include "CavrnusFunctionLibrary.h"
 #include "CavrnusConnectorModule.h"
 #include <GameFramework/PlayerController.h>
 #include <HAL/FileManager.h>

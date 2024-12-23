@@ -6,18 +6,8 @@ using System.IO;
 
 public class CavrnusConnectorEditor : ModuleRules
 {
-
-    private string ThirdPartyPath
-    {
-        //Wrapping this here because ModuleDir itself is thirdPartyPath
-        get { return Path.Combine(ModuleDirectory, "ThirdParty"); }
-    }
-
     private void AddDefaultIncludePaths()
     {
-        // Add all the public directories
-        PublicIncludePaths.Add(ModuleDirectory);        
-
         //Add Public dir for this module
         string PublicDirectory = Path.Combine(ModuleDirectory, "Public");
         if (Directory.Exists(PublicDirectory))
